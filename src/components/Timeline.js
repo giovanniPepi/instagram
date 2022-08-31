@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { db } from "../firebase";
 import uniqid from "uniqid";
+import Post from "./Post";
 
 const Timeline = () => {
   const [posts, setPosts] = useState([]);
@@ -26,7 +27,16 @@ const Timeline = () => {
     <section className="timeline">
       <div>
         {posts.map((post) => {
-          return <div key={uniqid()}>{post.id}</div>;
+          return (
+            <Post
+              key={uniqid()}
+              id={post.id}
+              img={post.img}
+              like={post.like}
+              comment={post.comment}
+              timestamp={post.timestamp.seconds}
+            />
+          );
         })}
       </div>
     </section>
