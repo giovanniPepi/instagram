@@ -1,9 +1,8 @@
 import getTime from "./getTime";
 
-test("returns 11 hours", () => {
-  expect(getTime(1661958)).toBe("11 hours");
+test("returns 2431 days between 04/01/2016 and 31/08/2022", () => {
+  expect(getTime(1451907936 * 1000)).toBe(2431);
 });
-
-test("returns days", () => {
-  expect(getTime(1660135)).toBe("30 days");
+test("returns days between 23/08 and 31/08/2022", () => {
+  expect(getTime(1661258701 * 1000)).toBe(8);
 });
