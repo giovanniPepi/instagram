@@ -1,4 +1,5 @@
 const getTime = (unix) => {
+  unix = unix * 1000;
   /*   https://stackoverflow.com/questions/3224834/get-difference-between-2-dates-in-javascript */
 
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -17,14 +18,14 @@ const getTime = (unix) => {
       b.getDate(),
       b.getHours()
     );
-
     return (utc2 - utc1) / _MS_PER_DAY;
   };
 
   const a = new Date(unix);
   const b = new Date();
   const difference = dateDiffInDays(a, b);
-  console.log(difference);
+
+  // switch statement doesn't seem to work even with the correct type
   if (difference <= 0.0833) return `${difference * 24} hour`;
   else if (difference > 0.0833 && difference <= 1)
     return `${difference * 24} hours`;
