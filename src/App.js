@@ -1,33 +1,33 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import AccountPage from "./components/AccountPage";
 import Header from "./components/Header";
 import RightSide from "./components/RightSide";
+import SigninPage from "./components/SigninPage";
 import Timeline from "./components/Timeline";
-import { useAuthState } from "react-firebase-hooks/auth";
+
 import { auth } from "./firebase";
-import Login from "./functions/Login";
 
 const App = () => {
-  const [user] = useAuthState(auth);
-
   const signOut = () => {
     auth.signOut();
   };
 
   return (
-    <main className="app">
-      {user ? (
-        <div className="app">
-          <h1>Hello, {user.displayName}</h1>
-          <h1>You are signed in as {user.email}</h1>
-          <button onClick={signOut}>Sign Out</button>
-        </div>
-      ) : (
-        <Login />
-      )}
-      <Header />
-      <Timeline />
-      <RightSide />
-    </main>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <main className="app">
+            <Header />
+            <Timeline />
+            <RightSide />
+          </main>
+        }
+      />
+      <Route path="/signin" element={<SigninPage />} />
+      <Route path="/account" element={<AccountPage />} />
+    </Routes>
   );
 };
 
