@@ -8,7 +8,7 @@ body > * {
   padding: 0;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 800px) {
   .app {
     display: grid;
     grid-template-columns: 3fr 1fr;
