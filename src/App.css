@@ -23,6 +23,7 @@ body > * {
     grid-column: 1/2;
     border: 1px solid black;
     height: 90vh;
+    overflow: scroll;
   }
   .rightSide {
     grid-column: 2/3;
