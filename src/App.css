@@ -32,4 +32,14 @@ body > * {
   .post {
     border: 2px solid red;
   }
+  .profile {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+  }
+  .profilePic {
+    width: 30px;
+    border-radius: 25px;
+  }
 }
