@@ -1,5 +1,4 @@
 import GoogleButton from "react-google-button";
-import { signInWithRedirect, getRedirectResult } from "../firebase";
 
 const Login = () => {
   return (

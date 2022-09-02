@@ -15,10 +15,8 @@ const Header = () => {
   return (
     <header>
       {user?.displayName ? (
-        <div>
-          <p>
-            Hello, <strong>{user?.displayName}</strong>
-          </p>
+        <div className="profile">
+          <strong>{user?.displayName}</strong>
           <button onClick={handleSignOut}>Sign Out</button>
         </div>
       ) : (
