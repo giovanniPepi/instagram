@@ -6,6 +6,7 @@ import Protected from "./components/Protected";
 import RightSide from "./components/RightSide";
 import SigninPage from "./components/SigninPage";
 import Timeline from "./components/Timeline";
+import UploadPage from "./components/UploadPage";
 import { AuthContextProvider } from "./context/AuthContext";
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
           element={
             <main className="app">
               <Header />
+              <UploadPage />
               <Timeline />
               <RightSide />
             </main>

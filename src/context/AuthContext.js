@@ -25,7 +25,6 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("User", currentUser);
     });
 
     return () => {
@@ -42,8 +41,4 @@ export const AuthContextProvider = ({ children }) => {
 
 export const UserAuth = () => {
   return useContext(AuthContext);
-};
-
-export const getProfilePicUrl = () => {
-  return getAuth().currentUser.photoURL || null;
 };
