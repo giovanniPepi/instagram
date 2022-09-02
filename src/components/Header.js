@@ -20,6 +20,8 @@ const Header = () => {
     if (user) {
       const getprofilePicUrl = async () => {
         const profilePicUrl = await getAuth().currentUser.photoURL;
+        const currentUser = getAuth().currentUser;
+        console.log(profilePicUrl, currentUser);
         setProfileImg(profilePicUrl);
       };
       getprofilePicUrl();
