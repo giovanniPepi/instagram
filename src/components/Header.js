@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { UserAuth } from "../context/AuthContext";
+import { getProfilePicUrl, UserAuth } from "../context/AuthContext";
 
 const Header = () => {
   const { user, logOut } = UserAuth();
@@ -12,11 +12,14 @@ const Header = () => {
     }
   };
 
+  const profilePicUrl = getProfilePicUrl();
+
   return (
     <header>
       {user?.displayName ? (
         <div className="profile">
           <strong>{user?.displayName}</strong>
+          <img src={profilePicUrl} alt="profile" className="profilePic" />
           <button onClick={handleSignOut}>Sign Out</button>
         </div>
       ) : (

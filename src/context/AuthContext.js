@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
+  getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithRedirect,
@@ -41,4 +42,8 @@ export const AuthContextProvider = ({ children }) => {
 
 export const UserAuth = () => {
   return useContext(AuthContext);
+};
+
+export const getProfilePicUrl = () => {
+  return getAuth().currentUser.photoURL || null;
 };
