@@ -6,24 +6,22 @@ import { UserAuth } from "../context/AuthContext";
 import { storage } from "../firebase";
 
 const UploadPage = () => {
-  // stores image in state
-  const [imageUpload, setImageUpload] = useState(null);
-
   //display uploaded IMG
   const [imageList, setImageList] = useState(null);
 
+  // auth context
   const { user } = UserAuth();
 
-  const uploadImage = () => {
-    // checks if there's a img in state before proceeding
-    if (imageUpload === null) return;
+  const uploadImage = (file) => {
+    // if (imageUpload === null) return;
+    console.log("upload img acesses 2");
 
     const imageRef = ref(
       storage,
-      `${user.displayName}/posts/${imageUpload.name + v4()}`
+      `${user.displayName}/posts/${file.name + v4()}`
     );
 
-    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+    uploadBytes(imageRef, file).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
         setImageList(url);
       });
@@ -36,7 +34,7 @@ const UploadPage = () => {
         type="file"
         /*Changes the state when a file is uploaded*/
         onChange={(event) => {
-          setImageUpload(event.target.files[0]);
+          uploadImage(event.target.files[0]);
         }}
       />
       <button onClick={uploadImage}> Upload IMG</button>
