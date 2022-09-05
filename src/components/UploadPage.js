@@ -22,7 +22,7 @@ const UploadPage = () => {
         type="file"
         /*Changes the state when a file is uploaded*/
         onChange={(event) => {
-          setImageUpload(event.target.file);
+          setImageUpload(event.target.files[0]);
         }}
       />
       <button onClick={uploadImage}> Upload IMG</button>
