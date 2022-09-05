@@ -1,20 +1,38 @@
-import { ref, uploadBytes } from "firebase/storage";
-import { useState } from "react";
+import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
+import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { storage } from "../firebase";
 
 const UploadPage = () => {
   // stores image in state
   const [imageUpload, setImageUpload] = useState(null);
+  //display uploaded IMG
+  const [imageList, setImageList] = useState([]);
 
-  // checks if there's a img in state before proceeding
+  const imageListRef = ref(storage, "posts/");
+
   const uploadImage = () => {
+    // checks if there's a img in state before proceeding
     if (imageUpload === null) return;
+
     const imageRef = ref(storage, `posts/${imageUpload.name + v4()}`);
-    uploadBytes(imageRef, imageUpload).then(() => {
-      console.log("img uploaded");
+
+    uploadBytes(imageRef, imageUpload).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setImageList((prev) => [...prev, url]);
+      });
     });
   };
+
+  useEffect(() => {
+    listAll(imageListRef).then((response) => {
+      response.items.forEach((item) => {
+        getDownloadURL(item).then((url) => {
+          setImageList((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
 
   return (
     <>
@@ -26,6 +44,9 @@ const UploadPage = () => {
         }}
       />
       <button onClick={uploadImage}> Upload IMG</button>
+      {imageList.map((url) => {
+        return <img src={url} alt="postimg" width="40" key={v4()} />;
+      })}
     </>
   );
 };
