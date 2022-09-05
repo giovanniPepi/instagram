@@ -21,7 +21,7 @@ const Header = () => {
       const getprofilePicUrl = async () => {
         const profilePicUrl = await getAuth().currentUser.photoURL;
         const currentUser = getAuth().currentUser;
-        console.log(profilePicUrl, currentUser);
+        console.log(profilePicUrl, currentUser.displayName);
         setProfileImg(profilePicUrl);
       };
       getprofilePicUrl();
@@ -34,6 +34,9 @@ const Header = () => {
         <div className="profile">
           <strong>{user?.displayName}</strong>
           <img src={profileImage} alt="profile" className="profilePic" />
+          <Link to="/upload">
+            <button>Upload post</button>
+          </Link>
           <button onClick={handleSignOut}>Sign Out</button>
         </div>
       ) : (

@@ -7,9 +7,11 @@ import RightSide from "./components/RightSide";
 import SigninPage from "./components/SigninPage";
 import Timeline from "./components/Timeline";
 import UploadPage from "./components/UploadPage";
-import { AuthContextProvider } from "./context/AuthContext";
+import { AuthContextProvider, UserAuth } from "./context/AuthContext";
 
 const App = () => {
+  const user = UserAuth();
+
   return (
     <AuthContextProvider>
       <Routes>
@@ -18,7 +20,6 @@ const App = () => {
           element={
             <main className="app">
               <Header />
-              <UploadPage />
               <Timeline />
               <RightSide />
             </main>
@@ -30,6 +31,14 @@ const App = () => {
           element={
             <Protected>
               <AccountPage />
+            </Protected>
+          }
+        />
+        <Route
+          path="/upload"
+          element={
+            <Protected>
+              <UploadPage />
             </Protected>
           }
         />

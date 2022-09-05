@@ -2,17 +2,18 @@ import { getAuth } from "firebase/auth";
 import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
+import { UserAuth } from "../context/AuthContext";
 import { storage } from "../firebase";
 
 const UploadPage = () => {
-  const currentUser = getAuth().currentUser.displayName;
-
   // stores image in state
   const [imageUpload, setImageUpload] = useState(null);
   //display uploaded IMG
   const [imageList, setImageList] = useState(null);
 
-  const imageListRef = ref(storage, "posts/");
+  const { user } = UserAuth();
+
+  const imageListRef = ref(storage, `${user.displayName}/posts/`);
 
   const uploadImage = () => {
     // checks if there's a img in state before proceeding
@@ -20,7 +21,7 @@ const UploadPage = () => {
 
     const imageRef = ref(
       storage,
-      `${currentUser}/posts/${imageUpload.name + v4()}`
+      `${user.displayName}/posts/${imageUpload.name + v4()}`
     );
 
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
