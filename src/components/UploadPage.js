@@ -8,12 +8,11 @@ import { storage } from "../firebase";
 const UploadPage = () => {
   // stores image in state
   const [imageUpload, setImageUpload] = useState(null);
+
   //display uploaded IMG
   const [imageList, setImageList] = useState(null);
 
   const { user } = UserAuth();
-
-  const imageListRef = ref(storage, `${user.displayName}/posts/`);
 
   const uploadImage = () => {
     // checks if there's a img in state before proceeding
@@ -31,18 +30,6 @@ const UploadPage = () => {
     });
   };
 
-  useEffect(() => {
-    listAll(imageListRef).then((response) => {
-      //avoid crashing when receiving an empty response from firebase
-      if (response.items.length <= 0) return;
-      const recentImg = response.items[0];
-      getDownloadURL(recentImg).then((response) => {
-        setImageList(response);
-      });
-    });
-    console.log(imageList);
-  }, []);
-
   return (
     <>
       <input
@@ -54,7 +41,7 @@ const UploadPage = () => {
       />
       <button onClick={uploadImage}> Upload IMG</button>
       {imageList !== null ? (
-        <img src={imageList} alt="postimg" width="40" key={v4()} />
+        <img src={imageList} alt="postimg" width="140" key={v4()} />
       ) : null}
     </>
   );

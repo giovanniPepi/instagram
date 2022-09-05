@@ -7,11 +7,9 @@ import RightSide from "./components/RightSide";
 import SigninPage from "./components/SigninPage";
 import Timeline from "./components/Timeline";
 import UploadPage from "./components/UploadPage";
-import { AuthContextProvider, UserAuth } from "./context/AuthContext";
+import { AuthContextProvider } from "./context/AuthContext";
 
 const App = () => {
-  const user = UserAuth();
-
   return (
     <AuthContextProvider>
       <Routes>
