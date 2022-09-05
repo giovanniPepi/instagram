@@ -30,7 +30,7 @@ const UploadPage = () => {
   };
 
   const uploadPost = () => {
-    postToFirestore(title, imgFile, description);
+    postToFirestore(title, imgFile, description, user.displayName);
   };
 
   return (
@@ -61,7 +61,12 @@ const UploadPage = () => {
         />
         {imgFile !== null ? (
           <>
-            <img src={imgFile} alt="postimg" width="450px" key={v4()} />
+            <img
+              src={imgFile}
+              alt="postimg"
+              className="timelineImg"
+              key={v4()}
+            />
           </>
         ) : null}
       </div>

@@ -48,6 +48,6 @@ body > * {
     width: 50vw;
   }
   .timelineImg {
-    width: 50vw;
+    max-width: 30vw;
   }
 }

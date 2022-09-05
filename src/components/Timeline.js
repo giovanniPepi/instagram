@@ -35,6 +35,9 @@ const Timeline = () => {
               like={post.like}
               comment={post.comment}
               timestamp={post.timestamp.seconds}
+              description={post.description}
+              title={post.title}
+              user={post.user}
             />
           );
         })}
