@@ -42,4 +42,12 @@ body > * {
     width: 30px;
     border-radius: 25px;
   }
+  .postPreview {
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+  }
+  .timelineImg {
+    width: 50vw;
+  }
 }
