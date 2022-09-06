@@ -20,19 +20,19 @@ import getTime from "../functions/getTime";
 
 const Post = ({
   id,
+  user,
   img,
   description,
   like,
+  hasLiked,
   comment,
   timestamp,
   userName,
   userImg,
 }) => {
-  const { user } = UserAuth();
+  console.log(hasLiked);
 
   const subscribeLike = async () => {
-    console.log(user.displayName, "clicked", id);
-
     try {
       const postRef = collection(db, "postDB");
       const q = query(postRef, where("id", "==", `${id}`), limit(1));
@@ -41,6 +41,8 @@ const Post = ({
       onSnapshot(q, (snapshot) => {
         snapshot.forEach(async (doc) => {
           const docRef = doc.ref;
+          const like = doc.data().like;
+
           await updateDoc(docRef, {
             like: arrayUnion(user.displayName),
           });
@@ -65,7 +67,14 @@ const Post = ({
       <p>{description}</p>
       <p>Posted {getTime(timestamp)} ago</p>
       <div className="postMetrics">
-        <span onClick={subscribeLike}>{like} likes</span>
+        {hasLiked ? (
+          <span onClick={subscribeLike} style={{ color: "red" }}>
+            {like} like
+          </span>
+        ) : (
+          <span onClick={subscribeLike}>{like} likes</span>
+        )}
+
         <span>{comment.length} comments</span>
       </div>
     </div>

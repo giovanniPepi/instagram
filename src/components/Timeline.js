@@ -11,8 +11,10 @@ import { useEffect } from "react";
 import { db } from "../firebase";
 import uniqid from "uniqid";
 import Post from "./Post";
+import { UserAuth } from "../context/AuthContext";
 
 const Timeline = () => {
+  const { user } = UserAuth();
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -39,9 +41,11 @@ const Timeline = () => {
           return (
             <Post
               key={uniqid()}
+              user={user}
               id={post.id}
               img={post.img}
               like={post.like.length}
+              hasLiked={post.like.includes(user.displayName)}
               comment={post.comment}
               timestamp={post.timestamp.seconds}
               description={post.description}
