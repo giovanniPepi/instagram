@@ -17,23 +17,19 @@ const Timeline = () => {
   useEffect(() => {
     try {
       const colRef = collection(db, "postDB");
-      /*         const docs = await getDocs(colRef);
-        docs.forEach((doc) => {
-          // https://javascript.plainenglish.io/how-to-add-to-an-array-in-react-state-3d08ddb2e1dc
-          setPosts((posts) => [...posts, doc.data()]);
-        }); */
       const q = query(colRef);
+      // https://stackoverflow.com/questions/69184182/react-firestore-listen-to-changes-in-firebase-collection-in-a-react-componen
       const snap = onSnapshot(q, (querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          setPosts((posts) => [...posts, doc.data()]);
-        });
+        setPosts(
+          querySnapshot.docs.map((doc) => ({
+            ...doc.data(),
+          }))
+        );
       });
     } catch (error) {
       console.log(error);
     }
   }, []);
-
-  console.log(posts);
 
   return (
     <section className="timeline">
