@@ -5,7 +5,6 @@ import getTime from "../functions/getTime";
 const Post = ({
   id,
   img,
-  title,
   description,
   like,
   comment,
@@ -29,7 +28,6 @@ const Post = ({
         />
         <p>{userName}</p>
       </div>
-      <h3>{title}</h3>
       <img src={img} alt={`${id}'s post`} className="timelineImg" />
       <p>{description}</p>
       <p>Posted {getTime(timestamp)} ago</p>

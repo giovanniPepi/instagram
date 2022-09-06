@@ -44,7 +44,6 @@ const Timeline = () => {
               comment={post.comment}
               timestamp={post.timestamp.seconds}
               description={post.description}
-              title={post.title}
               userName={post.userName}
               userImg={post.userImg}
             />
