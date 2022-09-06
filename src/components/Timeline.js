@@ -44,7 +44,7 @@ const Timeline = () => {
               user={user}
               id={post.id}
               img={post.img}
-              like={post.like.length}
+              like={post.like}
               hasLiked={post.like.includes(user.displayName)}
               comment={post.comment}
               timestamp={post.timestamp.seconds}

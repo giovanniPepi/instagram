@@ -56,6 +56,7 @@ const Post = ({
       console.log(error);
     }
   };
+
   const unsubscribeLike = async () => {
     try {
       const postRef = collection(db, "postDB");
@@ -77,6 +78,8 @@ const Post = ({
     }
   };
 
+  const subscribeComment = () => {};
+
   return (
     <div key={uniqid()} className="post">
       <div className="postHeader">
@@ -92,11 +95,19 @@ const Post = ({
       <p>Posted {getTime(timestamp)} ago</p>
       <div className="postMetrics">
         {hasLiked ? (
-          <span onClick={unsubscribeLike} style={{ color: "red" }}>
-            {like} like
-          </span>
+          like.length > 1 ? (
+            <span onClick={unsubscribeLike} style={{ color: "red" }}>
+              {like.length} likes
+            </span>
+          ) : (
+            <span onClick={unsubscribeLike} style={{ color: "red" }}>
+              {like.length} like
+            </span>
+          )
+        ) : like.length > 1 ? (
+          <span onClick={subscribeLike}>{like.length} likes</span>
         ) : (
-          <span onClick={subscribeLike}>{like} like</span>
+          <span onClick={subscribeLike}>{like.length} like</span>
         )}
 
         <span>{comment.length} comments</span>
