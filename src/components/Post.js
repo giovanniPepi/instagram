@@ -1,4 +1,5 @@
 import uniqid from "uniqid";
+import { UserAuth } from "../context/AuthContext";
 import getTime from "../functions/getTime";
 
 const Post = ({
@@ -12,6 +13,12 @@ const Post = ({
   userName,
   userImg,
 }) => {
+  const { user } = UserAuth();
+
+  const subscribeLike = () => {
+    console.log(user.displayName, "clicked", id);
+  };
+
   return (
     <div key={uniqid()} className="post">
       <div className="postHeader">
@@ -27,7 +34,7 @@ const Post = ({
       <p>{description}</p>
       <p>Posted {getTime(timestamp)} ago</p>
       <div className="postMetrics">
-        <span>{like} likes</span>
+        <span onClick={subscribeLike}>{like} likes</span>
         <span>{comment.length} comments</span>
       </div>
     </div>
