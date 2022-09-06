@@ -1,15 +1,19 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
+  getAuth,
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithRedirect,
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import blank from "../img/blank.png";
+
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [userImg, setUserImg] = useState(blank);
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
@@ -19,6 +23,13 @@ export const AuthContextProvider = ({ children }) => {
   const logOut = () => {
     signOut(auth);
   };
+
+  const getUserProfilePic = async () => {
+    const profilePicUrl = await getAuth().currentUser.photoURL;
+    setUserImg(profilePicUrl);
+  };
+
+  getUserProfilePic();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -31,7 +42,7 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ googleSignIn, logOut, user }}>
+    <AuthContext.Provider value={{ googleSignIn, logOut, user, userImg }}>
       {children}
     </AuthContext.Provider>
   );

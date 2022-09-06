@@ -1,23 +1,9 @@
-import { getAuth } from "firebase/auth";
-import { useEffect, useState } from "react";
 import { UserAuth } from "../context/AuthContext";
-import blank from "../img/blank.png";
 
 const Comments = ({ commentArray }) => {
-  const { user } = UserAuth();
-
-  const [userImg, setUserImg] = useState(blank);
+  const { user, userImg } = UserAuth();
 
   console.log(commentArray);
-
-  useEffect(() => {
-    const getUserProfilePic = async () => {
-      const profilePicUrl = await getAuth().currentUser.photoURL;
-      setUserImg(profilePicUrl);
-    };
-
-    getUserProfilePic();
-  }, []);
 
   return (
     <div className="commentSection">
