@@ -2,6 +2,7 @@ import {
   collection,
   getDocs,
   onSnapshot,
+  orderBy,
   query,
   QuerySnapshot,
 } from "firebase/firestore";
@@ -16,8 +17,9 @@ const Timeline = () => {
 
   useEffect(() => {
     try {
-      const colRef = collection(db, "postDB");
-      const q = query(colRef);
+      let colRef = collection(db, "postDB");
+      // https://www.youtube.com/watch?v=Fa_e2-H_40k
+      const q = query(colRef, orderBy("timestamp", "desc"));
       // https://stackoverflow.com/questions/69184182/react-firestore-listen-to-changes-in-firebase-collection-in-a-react-componen
       const snap = onSnapshot(q, (querySnapshot) => {
         setPosts(
@@ -25,6 +27,7 @@ const Timeline = () => {
             ...doc.data(),
           }))
         );
+        return snap;
       });
     } catch (error) {
       console.log(error);
