@@ -25,6 +25,11 @@ const Post = ({
   userImg,
 }) => {
   const { user } = UserAuth();
+
+  const removeUserFromArray = (user) => {
+    return user !== userName;
+  };
+
   const subscribeLike = async () => {
     console.log(user.displayName, "clicked", id);
 
@@ -41,12 +46,16 @@ const Post = ({
 
           if (currentLikes.includes(userName)) {
             console.log("already liked");
-            return;
-          } else currentLikes.push(userName);
-
-          updateDoc(docRef, {
-            like: currentLikes,
-          });
+            const newLikes = currentLikes.filter(removeUserFromArray);
+            updateDoc(docRef, {
+              like: newLikes,
+            });
+          } else {
+            currentLikes.push(userName);
+            updateDoc(docRef, {
+              like: currentLikes,
+            });
+          }
         });
       });
     } catch (error) {
