@@ -13,6 +13,7 @@ import {
   limit,
 } from "firebase/firestore";
 import { useState } from "react";
+import { createSearchParams } from "react-router-dom";
 import uniqid from "uniqid";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
@@ -30,7 +31,9 @@ const Post = ({
   userName,
   userImg,
 }) => {
-  console.log(hasLiked);
+  // unsubscribe from updates on each function to avoid infinite loop
+
+  // https://stackoverflow.com/questions/46642652/how-to-remove-listener-for-documentsnapshot-events-google-cloud-firestore
 
   const subscribeLike = async () => {
     try {
@@ -38,14 +41,35 @@ const Post = ({
       const q = query(postRef, where("id", "==", `${id}`), limit(1));
 
       // on snapshot is used to acess query data
-      onSnapshot(q, (snapshot) => {
+      let unsubscribeLiked = onSnapshot(q, (snapshot) => {
         snapshot.forEach(async (doc) => {
           const docRef = doc.ref;
-          const like = doc.data().like;
 
           await updateDoc(docRef, {
             like: arrayUnion(user.displayName),
           });
+
+          unsubscribeLiked();
+        });
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const unsubscribeLike = async () => {
+    try {
+      const postRef = collection(db, "postDB");
+      const q = query(postRef, where("id", "==", `${id}`), limit(1));
+
+      // on snapshot is used to acess query data
+      let unsubscribeDisliked = onSnapshot(q, (snapshot) => {
+        snapshot.forEach(async (doc) => {
+          const docRef = doc.ref;
+
+          await updateDoc(docRef, {
+            like: arrayRemove(user.displayName),
+          });
+          unsubscribeDisliked();
         });
       });
     } catch (error) {
@@ -68,11 +92,11 @@ const Post = ({
       <p>Posted {getTime(timestamp)} ago</p>
       <div className="postMetrics">
         {hasLiked ? (
-          <span onClick={subscribeLike} style={{ color: "red" }}>
+          <span onClick={unsubscribeLike} style={{ color: "red" }}>
             {like} like
           </span>
         ) : (
-          <span onClick={subscribeLike}>{like} likes</span>
+          <span onClick={subscribeLike}>{like} like</span>
         )}
 
         <span>{comment.length} comments</span>
