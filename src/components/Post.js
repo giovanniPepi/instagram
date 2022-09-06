@@ -7,6 +7,10 @@ import {
   updateDoc,
   where,
   update,
+  getDoc,
+  arrayRemove,
+  arrayUnion,
+  limit,
 } from "firebase/firestore";
 import { useState } from "react";
 import uniqid from "uniqid";
@@ -26,36 +30,20 @@ const Post = ({
 }) => {
   const { user } = UserAuth();
 
-  const removeUserFromArray = (user) => {
-    return user !== userName;
-  };
-
   const subscribeLike = async () => {
     console.log(user.displayName, "clicked", id);
 
     try {
       const postRef = collection(db, "postDB");
-      const q = query(postRef, where("id", "==", `${id}`));
+      const q = query(postRef, where("id", "==", `${id}`), limit(1));
 
       // on snapshot is used to acess query data
       onSnapshot(q, (snapshot) => {
-        snapshot.forEach((doc) => {
+        snapshot.forEach(async (doc) => {
           const docRef = doc.ref;
-
-          let currentLikes = doc.data().like;
-
-          if (currentLikes.includes(userName)) {
-            console.log("already liked");
-            const newLikes = currentLikes.filter(removeUserFromArray);
-            updateDoc(docRef, {
-              like: newLikes,
-            });
-          } else {
-            currentLikes.push(userName);
-            updateDoc(docRef, {
-              like: currentLikes,
-            });
-          }
+          await updateDoc(docRef, {
+            like: arrayUnion(user.displayName),
+          });
         });
       });
     } catch (error) {
