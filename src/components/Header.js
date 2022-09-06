@@ -38,6 +38,9 @@ const Header = () => {
             <button>Upload post</button>
           </Link>
           <button onClick={handleSignOut}>Sign Out</button>
+          <Link to="/">
+            <button>Home</button>
+          </Link>
         </div>
       ) : (
         <Link to="/signin">Sign In</Link>

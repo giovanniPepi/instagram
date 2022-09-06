@@ -36,6 +36,7 @@ const App = () => {
           path="/upload"
           element={
             <Protected>
+              <Header />
               <UploadPage />
             </Protected>
           }

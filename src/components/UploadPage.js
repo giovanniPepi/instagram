@@ -1,5 +1,4 @@
-import { getAuth } from "firebase/auth";
-import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { UserAuth } from "../context/AuthContext";
