@@ -9,13 +9,13 @@ const Post = ({
   like,
   comment,
   timestamp,
-  user,
+  userName,
+  userImg,
 }) => {
   return (
     <div key={uniqid()} className="post">
-      <p>
-        Post {id} by {user}! plz likes
-      </p>
+      <img src={userImg} alt={`${userName}'s profile`} />
+      <p>{userName}</p>
       <p>{title}</p>
       <img src={img} alt={`${id}'s post`} className="timelineImg" />
       <p>{description}</p>

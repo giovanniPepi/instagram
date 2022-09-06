@@ -2,12 +2,13 @@ import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase";
 import uniqid from "uniqid";
 
-const postToFirestore = async (title, img, description, user) => {
+const postToFirestore = async (title, img, description, userName, userImg) => {
   const docRef = collection(db, "postDB");
 
   await addDoc(docRef, {
     id: `${uniqid()}`,
-    user,
+    userName,
+    userImg,
     title,
     img,
     description,

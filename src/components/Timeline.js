@@ -37,7 +37,8 @@ const Timeline = () => {
               timestamp={post.timestamp.seconds}
               description={post.description}
               title={post.title}
-              user={post.user}
+              userName={post.userName}
+              userImg={post.userImg}
             />
           );
         })}

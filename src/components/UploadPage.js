@@ -1,9 +1,11 @@
+import { getAuth } from "firebase/auth";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { UserAuth } from "../context/AuthContext";
 import { storage } from "../firebase";
 import postToFirestore from "../functions/postToFirestore";
+import blank from "../img/blank.png";
 import Post from "./Post";
 
 const UploadPage = () => {
@@ -11,6 +13,7 @@ const UploadPage = () => {
   const [imgFile, setimgFile] = useState(null);
   const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
+  const [userImg, setUserImg] = useState(blank);
 
   // auth context
   const { user } = UserAuth();
@@ -28,8 +31,18 @@ const UploadPage = () => {
     });
   };
 
+  useEffect(() => {
+    const getUserProfilePic = async () => {
+      const profilePicUrl = await getAuth().currentUser.photoURL;
+      setUserImg(profilePicUrl);
+    };
+    getUserProfilePic();
+    console.log(userImg);
+  }, [userImg]);
+
   const uploadPost = () => {
-    postToFirestore(title, imgFile, description, user.displayName);
+    const userName = user.displayName;
+    postToFirestore(title, imgFile, description, userName, userImg);
   };
 
   return (
