@@ -7,6 +7,10 @@ body > * {
   margin: 0;
   padding: 0;
 }
+p {
+  margin: 0;
+  padding: 0;
+}
 
 @media screen and (min-width: 800px) {
   .app {
@@ -49,5 +53,14 @@ body > * {
   }
   .timelineImg {
     max-width: 30vw;
+  }
+  .postHeader {
+    display: flex;
+    align-items: center;
+  }
+  .postMetrics {
+    display: flex;
+    font-weight: bold;
+    gap: 0.5rem;
   }
 }

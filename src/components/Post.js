@@ -14,13 +14,19 @@ const Post = ({
 }) => {
   return (
     <div key={uniqid()} className="post">
-      <img src={userImg} alt={`${userName}'s profile`} />
-      <p>{userName}</p>
-      <p>{title}</p>
+      <div className="postHeader">
+        <img
+          className="profilePic"
+          src={userImg}
+          alt={`${userName}'s profile`}
+        />
+        <p>{userName}</p>
+      </div>
+      <h3>{title}</h3>
       <img src={img} alt={`${id}'s post`} className="timelineImg" />
       <p>{description}</p>
       <p>Posted {getTime(timestamp)} ago</p>
-      <div>
+      <div className="postMetrics">
         <span>{like} likes</span>
         <span>{comment.length} comments</span>
       </div>
