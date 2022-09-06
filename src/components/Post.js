@@ -18,6 +18,7 @@ import uniqid from "uniqid";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import getTime from "../functions/getTime";
+import Comments from "./Comments";
 
 const Post = ({
   id,
@@ -80,8 +81,6 @@ const Post = ({
     }
   };
 
-  const subscribeComment = () => {};
-
   return (
     <div key={uniqid()} className="post">
       <div className="postHeader">
@@ -112,7 +111,13 @@ const Post = ({
           <span onClick={subscribeLike}>{like.length} like</span>
         )}
         {showComments ? (
-          <span onClick={() => setShowComments(false)}>COMMENTS</span>
+          <span
+            onClick={() => {
+              setShowComments(false);
+            }}
+          >
+            <Comments commentArray={comment} userImg={userImg} />
+          </span>
         ) : (
           <span onClick={() => setShowComments(true)}>
             {comment.length} comments
