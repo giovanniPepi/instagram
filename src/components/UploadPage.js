@@ -42,20 +42,12 @@ const UploadPage = () => {
 
   const uploadPost = () => {
     const userName = user.displayName;
-    postToFirestore(title, imgFile, description, userName, userImg);
+    postToFirestore(imgFile, description, userName, userImg);
   };
 
   return (
     <>
       <div className="postPreview">
-        <label htmlFor="postTitle">Title</label>
-        <input
-          id="postTitle"
-          type="text"
-          onChange={(event) => {
-            setTitle(event.target.value);
-          }}
-        />
         <label htmlFor="postDescription">Description</label>
         <input
           id="postDescription"
