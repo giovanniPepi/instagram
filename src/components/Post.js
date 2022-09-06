@@ -31,6 +31,8 @@ const Post = ({
   userName,
   userImg,
 }) => {
+  const [showComments, setShowComments] = useState(false);
+
   // unsubscribe from updates on each function to avoid infinite loop
 
   // https://stackoverflow.com/questions/46642652/how-to-remove-listener-for-documentsnapshot-events-google-cloud-firestore
@@ -109,8 +111,13 @@ const Post = ({
         ) : (
           <span onClick={subscribeLike}>{like.length} like</span>
         )}
-
-        <span>{comment.length} comments</span>
+        {showComments ? (
+          <span onClick={() => setShowComments(false)}>COMMENTS</span>
+        ) : (
+          <span onClick={() => setShowComments(true)}>
+            {comment.length} comments
+          </span>
+        )}
       </div>
     </div>
   );
