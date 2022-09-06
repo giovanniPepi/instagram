@@ -1,4 +1,10 @@
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  onSnapshot,
+  query,
+  QuerySnapshot,
+} from "firebase/firestore";
 import { useState } from "react";
 import { useEffect } from "react";
 import { db } from "../firebase";
@@ -9,20 +15,22 @@ const Timeline = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const getPostFromFirestore = async () => {
-      try {
-        const colRef = collection(db, "postDB");
-        const docs = await getDocs(colRef);
+    try {
+      const colRef = collection(db, "postDB");
+      /*         const docs = await getDocs(colRef);
         docs.forEach((doc) => {
           // https://javascript.plainenglish.io/how-to-add-to-an-array-in-react-state-3d08ddb2e1dc
           setPosts((posts) => [...posts, doc.data()]);
+        }); */
+      const q = query(colRef);
+      const snap = onSnapshot(q, (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          setPosts((posts) => [...posts, doc.data()]);
         });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getPostFromFirestore();
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   console.log(posts);
