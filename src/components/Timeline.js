@@ -10,12 +10,16 @@ const Timeline = () => {
 
   useEffect(() => {
     const getPostFromFirestore = async () => {
-      const colRef = collection(db, "postDB");
-      const docs = await getDocs(colRef);
-      docs.forEach((doc) => {
-        // https://javascript.plainenglish.io/how-to-add-to-an-array-in-react-state-3d08ddb2e1dc
-        setPosts((posts) => [...posts, doc.data()]);
-      });
+      try {
+        const colRef = collection(db, "postDB");
+        const docs = await getDocs(colRef);
+        docs.forEach((doc) => {
+          // https://javascript.plainenglish.io/how-to-add-to-an-array-in-react-state-3d08ddb2e1dc
+          setPosts((posts) => [...posts, doc.data()]);
+        });
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     getPostFromFirestore();
