@@ -11,7 +11,7 @@ const postToFirestore = async (img, description, userName, userImg) => {
     userImg,
     img,
     description,
-    like: 0,
+    like: [],
     comment: [],
     timestamp: serverTimestamp(),
   });

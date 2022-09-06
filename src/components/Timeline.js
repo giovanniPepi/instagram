@@ -43,7 +43,7 @@ const Timeline = () => {
               key={uniqid()}
               id={post.id}
               img={post.img}
-              like={post.like}
+              like={post.like.length}
               comment={post.comment}
               timestamp={post.timestamp.seconds}
               description={post.description}

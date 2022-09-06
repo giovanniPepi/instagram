@@ -25,13 +25,10 @@ const Post = ({
   userImg,
 }) => {
   const { user } = UserAuth();
-  const [shouldUpdate, setShouldUpdate] = useState(false);
-
   const subscribeLike = async () => {
     console.log(user.displayName, "clicked", id);
 
     try {
-      setShouldUpdate(true);
       const postRef = collection(db, "postDB");
       const q = query(postRef, where("id", "==", `${id}`));
 
@@ -40,16 +37,16 @@ const Post = ({
         snapshot.forEach((doc) => {
           const docRef = doc.ref;
 
-          if (shouldUpdate === true) {
-            const currentLikes = doc.data().like;
-            currentLikes.push(userName);
+          let currentLikes = doc.data().like;
 
-            updateDoc(docRef, {
-              like: currentLikes,
-            });
+          if (currentLikes.includes(userName)) {
+            console.log("already liked");
+            return;
+          } else currentLikes.push(userName);
 
-            setShouldUpdate(false);
-          }
+          updateDoc(docRef, {
+            like: currentLikes,
+          });
         });
       });
     } catch (error) {
