@@ -8,11 +8,12 @@ import {
   arrayUnion,
   limit,
 } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import { db } from "../firebase";
 import getTime from "../functions/getTime";
 import Comments from "./Comments";
+import LikeModal from "./LikeModal";
 
 const Post = ({
   id,
@@ -27,6 +28,7 @@ const Post = ({
   userImg,
 }) => {
   const [showComments, setShowComments] = useState(false);
+  const [showLikeModal, setShowLikeModal] = useState(false);
 
   // unsubscribe from updates on each function to avoid infinite loop
 
@@ -75,6 +77,10 @@ const Post = ({
     }
   };
 
+  useEffect(() => {
+    console.log(showLikeModal);
+  });
+
   return (
     <div key={uniqid()} className="post">
       <div className="postHeader">
@@ -92,17 +98,39 @@ const Post = ({
         {hasLiked ? (
           like.length > 1 ? (
             <span onClick={unsubscribeLike} style={{ color: "red" }}>
-              {like.length} likes
+              {like.length}
+              likes
+              <button onClick={() => setShowLikeModal(true)}>
+                SHOW WHO LIKED!
+              </button>
+              {showLikeModal ? <LikeModal likeArray={like} /> : null}
             </span>
           ) : (
-            <span onClick={unsubscribeLike} style={{ color: "red" }}>
-              {like.length} like
+            <span onClick={unsubscribeLike}>
+              {like.length}
+              like
+              <button onClick={() => setShowLikeModal(true)}>
+                SHOW WHO LIKED!
+              </button>
+              {showLikeModal ? <LikeModal likeArray={like} /> : null}
             </span>
           )
         ) : like.length > 1 ? (
-          <span onClick={subscribeLike}>{like.length} likes</span>
+          <span onClick={subscribeLike}>
+            {like.length} likes
+            <button onClick={() => setShowLikeModal(true)}>
+              SHOW WHO LIKED!
+            </button>
+            {showLikeModal ? <LikeModal likeArray={like} /> : null}
+          </span>
         ) : (
-          <span onClick={subscribeLike}>{like.length} like</span>
+          <span onClick={subscribeLike}>
+            {like.length} like
+            <button onClick={() => setShowLikeModal(true)}>
+              SHOW WHO LIKED!
+            </button>
+            {showLikeModal ? <LikeModal likeArray={like} /> : null}
+          </span>
         )}
         {showComments ? (
           <span>
