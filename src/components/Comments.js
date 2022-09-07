@@ -21,8 +21,6 @@ const Comments = ({ commentArray, id }) => {
   const [commentText, setCommentText] = useState(null);
   const userName = user.displayName;
 
-  console.log(commentArray);
-
   const postCommentToFirestore = async () => {
     const postRef = collection(db, "postDB");
     const q = query(postRef, where("id", "==", `${id}`), limit(1));
@@ -32,6 +30,7 @@ const Comments = ({ commentArray, id }) => {
         //reference to the received data
         const docRef = doc.ref;
 
+        if (!commentText || !userName || !userImg) return;
         await updateDoc(docRef, {
           comment: arrayUnion({
             commentText,
