@@ -11,7 +11,6 @@ import Post from "./Post";
 const UploadPage = () => {
   //display uploaded IMG
   const [imgFile, setimgFile] = useState(null);
-  const [title, setTitle] = useState(null);
   const [description, setDescription] = useState(null);
   const [userImg, setUserImg] = useState(blank);
 

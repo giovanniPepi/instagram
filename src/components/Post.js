@@ -111,12 +111,8 @@ const Post = ({
           <span onClick={subscribeLike}>{like.length} like</span>
         )}
         {showComments ? (
-          <span
-            onClick={() => {
-              setShowComments(false);
-            }}
-          >
-            <Comments commentArray={comment} userImg={userImg} />
+          <span>
+            <Comments commentArray={comment} userImg={userImg} id={id} />
           </span>
         ) : (
           <span onClick={() => setShowComments(true)}>

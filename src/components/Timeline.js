@@ -28,6 +28,8 @@ const Timeline = () => {
             ...doc.data(),
           }))
         );
+        // remove the function call to get realtime listeners
+        snap();
       });
     } catch (error) {
       console.log(error);
