@@ -13,6 +13,7 @@ import { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { v4 } from "uuid";
+import getTime from "../functions/getTime";
 
 const Comments = ({ commentArray, id }) => {
   const { user, userImg } = UserAuth();
@@ -58,7 +59,7 @@ const Comments = ({ commentArray, id }) => {
               <p>
                 <strong> {comment.userName}</strong> {comment.commentText}
               </p>
-              <p></p>
+              <p>{getTime(comment.timestamp.seconds)} ago</p>
             </div>
           );
         })}
