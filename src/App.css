@@ -63,4 +63,13 @@ p {
     font-weight: bold;
     gap: 0.5rem;
   }
+  .profilePicMini {
+    width: 20px;
+    border-radius: 25px;
+  }
+  .comment {
+    display: flex;
+    gap: 0.5rem;
+    font-weight: normal;
+  }
 }
