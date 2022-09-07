@@ -7,7 +7,7 @@ import Post from "./Post";
 import { UserAuth } from "../context/AuthContext";
 
 const Timeline = () => {
-  const { user } = UserAuth();
+  const { user, currentUserName } = UserAuth();
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Timeline = () => {
           }))
         );
         // remove the function call to get realtime listeners
-        snap();
+        // snap();
       });
     } catch (error) {
       console.log(error);
@@ -40,12 +40,12 @@ const Timeline = () => {
               id={post.id}
               img={post.img}
               like={post.like}
-              hasLiked={post.like.includes(user.displayName)}
+              hasLiked={post.like.includes(currentUserName)}
               comment={post.comment}
               timestamp={post.timestamp.seconds}
               description={post.description}
-              userName={post.userName}
-              userImg={post.userImg}
+              authorUserName={post.userName}
+              authorUserImg={post.userImg}
             />
           );
         })}

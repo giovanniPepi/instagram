@@ -10,6 +10,7 @@ import {
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import uniqid from "uniqid";
+import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import getTime from "../functions/getTime";
 import Comments from "./Comments";
@@ -24,11 +25,14 @@ const Post = ({
   hasLiked,
   comment,
   timestamp,
-  userName,
-  userImg,
+  authorUserName,
+  authorUserImg,
 }) => {
   const [showComments, setShowComments] = useState(false);
   const [showLikeModal, setShowLikeModal] = useState(false);
+  const { currentUserName, userImg } = UserAuth();
+
+  // console.log(currentUserName, userImg);
 
   // unsubscribe from updates on each function to avoid infinite loop
 
@@ -36,19 +40,24 @@ const Post = ({
 
   const subscribeLike = async () => {
     try {
+      console.log("subs");
       const postRef = collection(db, "postDB");
       const q = query(postRef, where("id", "==", `${id}`), limit(1));
 
       // on snapshot is used to acess query data
-      let unsubscribeLiked = onSnapshot(q, (snapshot) => {
+      let snapSub = onSnapshot(q, (snapshot) => {
         snapshot.forEach(async (doc) => {
           const docRef = doc.ref;
 
+          if (!currentUserName || !userImg) {
+            console.log("fudeu");
+            return;
+          }
           await updateDoc(docRef, {
-            like: arrayUnion(user.displayName),
+            like: arrayUnion({ authorUserName: currentUserName, userImg }),
           });
 
-          unsubscribeLiked();
+          snapSub();
         });
       });
     } catch (error) {
@@ -58,18 +67,19 @@ const Post = ({
 
   const unsubscribeLike = async () => {
     try {
+      console.log("unsub");
       const postRef = collection(db, "postDB");
       const q = query(postRef, where("id", "==", `${id}`), limit(1));
 
       // on snapshot is used to acess query data
-      let unsubscribeDisliked = onSnapshot(q, (snapshot) => {
+      let snapUsub = onSnapshot(q, (snapshot) => {
         snapshot.forEach(async (doc) => {
           const docRef = doc.ref;
 
           await updateDoc(docRef, {
             like: arrayRemove(user.displayName),
           });
-          unsubscribeDisliked();
+          snapUsub();
         });
       });
     } catch (error) {
@@ -77,19 +87,15 @@ const Post = ({
     }
   };
 
-  useEffect(() => {
-    console.log(showLikeModal);
-  });
-
   return (
     <div key={uniqid()} className="post">
       <div className="postHeader">
         <img
           className="profilePic"
-          src={userImg}
-          alt={`${userName}'s profile`}
+          src={authorUserImg}
+          alt={`${authorUserName}'s profile`}
         />
-        <p>{userName}</p>
+        <p>{authorUserName}</p>
       </div>
       <img src={img} alt={`${id}'s post`} className="timelineImg" />
       <p>{description}</p>
@@ -143,7 +149,11 @@ const Post = ({
         {showComments ? (
           <span>
             <span onClick={() => setShowComments(false)}>Hide</span>
-            <Comments commentArray={comment} userImg={userImg} id={id} />
+            <Comments
+              commentArray={comment}
+              authorUserImg={authorUserImg}
+              id={id}
+            />
           </span>
         ) : (
           <span onClick={() => setShowComments(true)}>
