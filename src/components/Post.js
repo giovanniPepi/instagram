@@ -112,6 +112,7 @@ const Post = ({
         )}
         {showComments ? (
           <span>
+            <span onClick={() => setShowComments(false)}>Hide</span>
             <Comments commentArray={comment} userImg={userImg} id={id} />
           </span>
         ) : (
