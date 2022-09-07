@@ -103,6 +103,9 @@ const Post = ({
               <button onClick={() => setShowLikeModal(true)}>
                 SHOW WHO LIKED!
               </button>
+              <button onClick={() => setShowLikeModal(false)}>
+                HIDE LIKES
+              </button>
               {showLikeModal ? <LikeModal likeArray={like} /> : null}
             </span>
           ) : (
@@ -111,6 +114,9 @@ const Post = ({
               like
               <button onClick={() => setShowLikeModal(true)}>
                 SHOW WHO LIKED!
+              </button>
+              <button onClick={() => setShowLikeModal(false)}>
+                HIDE LIKES
               </button>
               {showLikeModal ? <LikeModal likeArray={like} /> : null}
             </span>
@@ -129,6 +135,7 @@ const Post = ({
             <button onClick={() => setShowLikeModal(true)}>
               SHOW WHO LIKED!
             </button>
+            <button onClick={() => setShowLikeModal(false)}>HIDE LIKES</button>
             {showLikeModal ? <LikeModal likeArray={like} /> : null}
           </span>
         )}
