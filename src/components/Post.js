@@ -1,21 +1,15 @@
-import { async } from "@firebase/util";
 import {
   collection,
-  doc,
   onSnapshot,
   query,
   updateDoc,
   where,
-  update,
-  getDoc,
   arrayRemove,
   arrayUnion,
   limit,
 } from "firebase/firestore";
 import { useState } from "react";
-import { createSearchParams } from "react-router-dom";
 import uniqid from "uniqid";
-import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import getTime from "../functions/getTime";
 import Comments from "./Comments";

@@ -3,7 +3,6 @@ import "./App.css";
 import AccountPage from "./components/AccountPage";
 import Header from "./components/Header";
 import Protected from "./components/Protected";
-import RightSide from "./components/RightSide";
 import SigninPage from "./components/SigninPage";
 import Timeline from "./components/Timeline";
 import UploadPage from "./components/UploadPage";
@@ -19,7 +18,6 @@ const App = () => {
             <main className="app">
               <Header />
               <Timeline />
-              <RightSide />
             </main>
           }
         />
