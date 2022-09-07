@@ -14,6 +14,7 @@ import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { v4 } from "uuid";
 import getTime from "../functions/getTime";
+import Alert from "../icons/Alert";
 
 const Comments = ({ commentArray, id }) => {
   const { user, userImg } = UserAuth();
@@ -66,7 +67,9 @@ const Comments = ({ commentArray, id }) => {
                   </p>
                   <p>{getTime(comment.timestamp.seconds)} ago</p>
                 </>
-              ) : null}
+              ) : (
+                <Alert />
+              )}
             </div>
           );
         })}
