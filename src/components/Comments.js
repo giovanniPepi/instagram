@@ -51,15 +51,22 @@ const Comments = ({ commentArray, id }) => {
         {commentArray.map((comment) => {
           return (
             <div className="comment" key={v4()}>
-              <img
-                src={comment.userImg}
-                alt="avatar"
-                className="profilePicMini"
-              />
-              <p>
-                <strong> {comment.userName}</strong> {comment.commentText}
-              </p>
-              <p>{getTime(comment.timestamp.seconds)} ago</p>
+              {comment.userImg &&
+              comment.userName &&
+              comment.commentText &&
+              comment.timestamp ? (
+                <>
+                  <img
+                    src={comment.userImg}
+                    alt="avatar"
+                    className="profilePicMini"
+                  />
+                  <p>
+                    <strong> {comment.userName}</strong> {comment.commentText}
+                  </p>
+                  <p>{getTime(comment.timestamp.seconds)} ago</p>
+                </>
+              ) : null}
             </div>
           );
         })}
