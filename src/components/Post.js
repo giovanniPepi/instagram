@@ -13,6 +13,8 @@ import uniqid from "uniqid";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import getTime from "../functions/getTime";
+import EmptyHeart from "../icons/EmptyHeart";
+import Heart from "../icons/Heart";
 import Comments from "./Comments";
 import LikeModal from "./LikeModal";
 
@@ -117,7 +119,9 @@ const Post = ({
       <div className="postMetrics">
         {likeIndexToRemove !== -1 ? (
           <div>
-            <div onClick={unsubscribeLike}>DISLIKE</div>
+            <button className="heart" onClick={unsubscribeLike}>
+              <Heart />
+            </button>
             <p>{like.length} likes</p>
             <button onClick={() => setShowLikeModal(true)}>LIKELIST</button>
             <button onClick={() => setShowLikeModal(false)}>
@@ -127,7 +131,9 @@ const Post = ({
           </div>
         ) : (
           <div>
-            <button onClick={subscribeLike}>LIKE</button>
+            <button className="heart" onClick={subscribeLike}>
+              <EmptyHeart />
+            </button>
             <p>{like.length} likes</p>
             <button onClick={() => setShowLikeModal(true)}>LIKELIST</button>
             <button onClick={() => setShowLikeModal(false)}>

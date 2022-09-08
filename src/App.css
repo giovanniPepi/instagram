@@ -6,6 +6,7 @@
   --light-blue: #0095f6;
   --font-primary: rgb(38, 38, 38);
   --font-secondary: rgb(142, 142, 142);
+  --red-heart: #ed4956;
   --modalRadius: 12px;
 }
 
@@ -109,5 +110,9 @@ button {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
+  }
+  /* resets SVG Buttons*/
+  .heart {
+    background-color: inherit;
   }
 }
