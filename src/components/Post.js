@@ -123,6 +123,7 @@ const Post = ({
             <button onClick={() => setShowLikeModal(false)}>
               HIDE LIKELIST
             </button>
+            {showLikeModal ? <LikeModal like={like} /> : null}
           </div>
         ) : (
           <div>

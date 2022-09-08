@@ -94,15 +94,20 @@ button {
   .likeModal {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: space-between;
     position: absolute;
     top: 45%;
     left: 40%;
     gap: 1rem;
     padding: 1rem;
-    min-width: 20vw;
     border: 1px solid black;
     background-color: var(--white0);
     border-radius: var(--modalRadius);
+  }
+  .likeLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
   }
 }
