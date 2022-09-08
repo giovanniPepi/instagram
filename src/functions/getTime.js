@@ -26,7 +26,7 @@ const getTime = (unix) => {
   const difference = dateDiffInDays(a, b);
 
   // switch statement doesn't seem to work even with the correct type
-  if (difference <= 0.0833) return `${difference * 24} hour`;
+  if (difference <= 0.0833) return `${difference * 24} HOUR`;
   else if (difference > 0.0833 && difference <= 1)
     return `${difference * 24} HOURS`;
   else if (difference > 1 && difference <= 2)

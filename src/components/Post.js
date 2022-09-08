@@ -154,32 +154,24 @@ const Post = ({
         )}
 
         <p className="postDescription">{description}</p>
-        <div className="postMetrics">
-          {showComments ? (
-            <div className="commentSection">
-              <span onClick={() => setShowComments(false)}>
-                <CommentIcon />
-              </span>
-              <Comments
-                commentArray={comment}
-                authorUserImg={authorUserImg}
-                id={id}
-              />
-            </div>
-          ) : (
-            <div
-              className="commentSection collapsed"
-              onClick={() => setShowComments(true)}
-            >
-              <p className="postDescription secondary">
-                View all {comment.length} comments
-              </p>
-            </div>
-          )}
-        </div>
-
-        <p className="secondary hoursAgo">{getTime(timestamp)} AGO</p>
       </div>
+      <div className="postMetrics">
+        <div className="commentSection">
+          <span
+            className="postDescription secondary"
+            onClick={() => setShowComments(true)}
+          >
+            View all {comment.length} comments
+          </span>
+          <Comments
+            commentArray={comment}
+            authorUserImg={authorUserImg}
+            id={id}
+          />
+        </div>
+      </div>
+
+      <p className="secondary hoursAgo">{getTime(timestamp)} AGO</p>
     </div>
   );
 };

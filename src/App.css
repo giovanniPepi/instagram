@@ -13,6 +13,8 @@
   --profile-pic-dimensions: 32px;
   --font-size-description: 14px;
   --post-padding: 0 16px;
+  --post-separator: rgb(239, 239, 239);
+  --elevated-separator: rgb(219, 219, 219);
 }
 
 body > * {
@@ -46,6 +48,8 @@ button {
 }
 .postDescription {
   font-size: var(--font-size-description);
+
+  padding: var(--post-padding);
 }
 .lowerPostSection {
   padding: var(--post-padding);
@@ -73,7 +77,6 @@ button {
 
   .timeline {
     grid-column: 2/5;
-    border: 1px solid black;
     height: 90vh;
     overflow: scroll;
     padding: var(--timeline-padding);
@@ -82,10 +85,10 @@ button {
     grid-column: 2/3;
     border: 1px solid black;
   }
-
   .post {
     background-color: var(--white0);
-    border: 1px solid black;
+    border: 1px solid var(--elevated-separator);
+    border-radius: 8px;
   }
   .profile {
     display: flex;
@@ -122,6 +125,8 @@ button {
     display: flex;
     gap: 0.5rem;
     font-weight: normal;
+
+    padding: var(--post-padding);
   }
   .postMetrics {
     display: flex;
@@ -162,9 +167,26 @@ button {
   }
   .commentSection {
     display: flex;
+    gap: 0.5rem;
     flex-direction: column;
   }
   .commentSection.collapsed {
     flex-direction: row;
+  }
+  .postSeparator {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    object-fit: cover;
+    border-top: 1px solid var(--post-separator);
+  }
+  .answeringSection {
+    display: flex;
+
+    padding: var(--post-padding);
+  }
+  .commentAnswerInput {
+    flex: 1;
+    border: none;
   }
 }
