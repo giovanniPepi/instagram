@@ -13,6 +13,7 @@ import uniqid from "uniqid";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import getTime from "../functions/getTime";
+import CommentIcon from "../icons/CommentIcon";
 import EmptyHeart from "../icons/EmptyHeart";
 import Heart from "../icons/Heart";
 import Comments from "./Comments";
@@ -143,18 +144,24 @@ const Post = ({
         )}
 
         {showComments ? (
-          <span>
-            <span onClick={() => setShowComments(false)}>Hide</span>
+          <div className="commentSection">
+            <span onClick={() => setShowComments(false)}>
+              <CommentIcon />
+            </span>
             <Comments
               commentArray={comment}
               authorUserImg={authorUserImg}
               id={id}
             />
-          </span>
+          </div>
         ) : (
-          <span onClick={() => setShowComments(true)}>
-            {comment.length} comments
-          </span>
+          <div
+            className="commentSection  collapsed"
+            onClick={() => setShowComments(true)}
+          >
+            <p>{comment.length} comments</p>
+            <CommentIcon />
+          </div>
         )}
       </div>
     </div>

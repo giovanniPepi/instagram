@@ -120,4 +120,11 @@ button {
   .heart {
     background-color: inherit;
   }
+  .commentSection {
+    display: flex;
+    flex-direction: column;
+  }
+  .commentSection.collapsed {
+    flex-direction: row;
+  }
 }
