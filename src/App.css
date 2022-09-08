@@ -11,6 +11,8 @@
   --timeline-padding: 20px 0;
   --post-margin: 8px 4px 8px 8px;
   --profile-pic-dimensions: 32px;
+  --font-size-description: 14px;
+  --post-padding: 0 16px;
 }
 
 body > * {
@@ -40,6 +42,15 @@ button {
   letter-spacing: 0.2px;
   font-size: 10px;
   line-height: 12px;
+}
+.postDescription {
+  font-size: var(--font-size-description);
+}
+.lowerPostSection {
+  padding: var(--post-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
 }
 
 @media screen and (min-width: 600px) {
@@ -120,6 +131,7 @@ button {
   .likeSection {
     display: flex;
     align-items: center;
+    gap: 0.4rem;
   }
 
   .likeModal {
@@ -144,6 +156,8 @@ button {
   /* resets SVG Buttons*/
   .heart {
     background-color: inherit;
+    padding: 0;
+    margin: 0;
   }
   .commentSection {
     display: flex;

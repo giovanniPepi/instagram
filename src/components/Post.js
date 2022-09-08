@@ -115,64 +115,71 @@ const Post = ({
         <p className="primary">{authorUserName}</p>
       </div>
       <img src={img} alt={`${id}'s post`} className="timelineImg" />
-      {likeIndexToRemove !== -1 ? (
-        <div className="likeSection">
-          <button className="heart" onClick={unsubscribeLike}>
-            <Heart />
-          </button>
-          <p>{like.length} likes</p>
-          <button
-            onClick={() => {
-              setShowLikeModal(true);
-            }}
-          >
-            LIKELIST
-          </button>
-          <button onClick={() => setShowLikeModal(false)}>HIDE LIKELIST</button>
-          {showLikeModal ? <LikeModal like={like} /> : null}
-        </div>
-      ) : (
-        <div className="likeSection">
-          <button className="heart" onClick={subscribeLike}>
-            <EmptyHeart />
-          </button>
-          <p>{like.length} likes</p>
-          <button
-            onClick={() => {
-              setShowLikeModal(true);
-            }}
-          >
-            LIKELIST
-          </button>
-          <button onClick={() => setShowLikeModal(false)}>HIDE LIKELIST</button>
-        </div>
-      )}
-
-      <p>{description}</p>
-      <div className="postMetrics">
-        {showComments ? (
-          <div className="commentSection">
-            <span onClick={() => setShowComments(false)}>
-              <CommentIcon />
-            </span>
-            <Comments
-              commentArray={comment}
-              authorUserImg={authorUserImg}
-              id={id}
-            />
+      <div className="lowerPostSection">
+        {likeIndexToRemove !== -1 ? (
+          <div className="likeSection">
+            <button className="heart" onClick={unsubscribeLike}>
+              <Heart />
+            </button>
+            <p>{like.length} likes</p>
+            <button
+              onClick={() => {
+                setShowLikeModal(true);
+              }}
+            >
+              LIKELIST
+            </button>
+            <button onClick={() => setShowLikeModal(false)}>
+              HIDE LIKELIST
+            </button>
+            {showLikeModal ? <LikeModal like={like} /> : null}
           </div>
         ) : (
-          <div
-            className="commentSection  collapsed"
-            onClick={() => setShowComments(true)}
-          >
-            <p>{comment.length} comments</p>
-            <CommentIcon />
+          <div className="likeSection">
+            <button className="heart" onClick={subscribeLike}>
+              <EmptyHeart />
+            </button>
+            <p>{like.length} likes</p>
+            <button
+              onClick={() => {
+                setShowLikeModal(true);
+              }}
+            >
+              LIKELIST
+            </button>
+            <button onClick={() => setShowLikeModal(false)}>
+              HIDE LIKELIST
+            </button>
           </div>
         )}
-      </div>
 
-      <p className="secondary hoursAgo">{getTime(timestamp)} AGO</p>
+        <p className="postDescription">{description}</p>
+        <div className="postMetrics">
+          {showComments ? (
+            <div className="commentSection">
+              <span onClick={() => setShowComments(false)}>
+                <CommentIcon />
+              </span>
+              <Comments
+                commentArray={comment}
+                authorUserImg={authorUserImg}
+                id={id}
+              />
+            </div>
+          ) : (
+            <div
+              className="commentSection collapsed"
+              onClick={() => setShowComments(true)}
+            >
+              <p className="postDescription secondary">
+                View all {comment.length} comments
+              </p>
+            </div>
+          )}
+        </div>
+
+        <p className="secondary hoursAgo">{getTime(timestamp)} AGO</p>
+      </div>
     </div>
   );
 };
