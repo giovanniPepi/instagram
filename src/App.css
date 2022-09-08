@@ -92,6 +92,11 @@ button {
     font-weight: bold;
     gap: 0.5rem;
   }
+  .likeSection {
+    display: flex;
+    align-items: center;
+  }
+
   .likeModal {
     display: flex;
     flex-direction: column;

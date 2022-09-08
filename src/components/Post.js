@@ -118,7 +118,7 @@ const Post = ({
       <p>Posted {getTime(timestamp)} ago</p>
       <div className="postMetrics">
         {likeIndexToRemove !== -1 ? (
-          <div>
+          <div className="likeSection">
             <button className="heart" onClick={unsubscribeLike}>
               <Heart />
             </button>
@@ -130,7 +130,7 @@ const Post = ({
             {showLikeModal ? <LikeModal like={like} /> : null}
           </div>
         ) : (
-          <div>
+          <div className="likeSection">
             <button className="heart" onClick={subscribeLike}>
               <EmptyHeart />
             </button>
