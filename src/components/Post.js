@@ -112,49 +112,44 @@ const Post = ({
           src={authorUserImg}
           alt={`${authorUserName}'s profile`}
         />
-        <p>{authorUserName}</p>
+        <p className="primary">{authorUserName}</p>
       </div>
       <img src={img} alt={`${id}'s post`} className="timelineImg" />
-      <p>{description}</p>
-      <p>Posted {getTime(timestamp)} ago</p>
-      <div className="postMetrics">
-        {likeIndexToRemove !== -1 ? (
-          <div className="likeSection">
-            <button className="heart" onClick={unsubscribeLike}>
-              <Heart />
-            </button>
-            <p>{like.length} likes</p>
-            <button
-              onClick={() => {
-                setShowLikeModal(true);
-              }}
-            >
-              LIKELIST
-            </button>
-            <button onClick={() => setShowLikeModal(false)}>
-              HIDE LIKELIST
-            </button>
-            {showLikeModal ? <LikeModal like={like} /> : null}
-          </div>
-        ) : (
-          <div className="likeSection">
-            <button className="heart" onClick={subscribeLike}>
-              <EmptyHeart />
-            </button>
-            <p>{like.length} likes</p>
-            <button
-              onClick={() => {
-                setShowLikeModal(true);
-              }}
-            >
-              LIKELIST
-            </button>
-            <button onClick={() => setShowLikeModal(false)}>
-              HIDE LIKELIST
-            </button>
-          </div>
-        )}
+      {likeIndexToRemove !== -1 ? (
+        <div className="likeSection">
+          <button className="heart" onClick={unsubscribeLike}>
+            <Heart />
+          </button>
+          <p>{like.length} likes</p>
+          <button
+            onClick={() => {
+              setShowLikeModal(true);
+            }}
+          >
+            LIKELIST
+          </button>
+          <button onClick={() => setShowLikeModal(false)}>HIDE LIKELIST</button>
+          {showLikeModal ? <LikeModal like={like} /> : null}
+        </div>
+      ) : (
+        <div className="likeSection">
+          <button className="heart" onClick={subscribeLike}>
+            <EmptyHeart />
+          </button>
+          <p>{like.length} likes</p>
+          <button
+            onClick={() => {
+              setShowLikeModal(true);
+            }}
+          >
+            LIKELIST
+          </button>
+          <button onClick={() => setShowLikeModal(false)}>HIDE LIKELIST</button>
+        </div>
+      )}
 
+      <p>{description}</p>
+      <div className="postMetrics">
         {showComments ? (
           <div className="commentSection">
             <span onClick={() => setShowComments(false)}>
@@ -176,6 +171,8 @@ const Post = ({
           </div>
         )}
       </div>
+
+      <p className="secondary hoursAgo">{getTime(timestamp)} AGO</p>
     </div>
   );
 };

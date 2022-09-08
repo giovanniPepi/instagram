@@ -28,14 +28,14 @@ const getTime = (unix) => {
   // switch statement doesn't seem to work even with the correct type
   if (difference <= 0.0833) return `${difference * 24} hour`;
   else if (difference > 0.0833 && difference <= 1)
-    return `${difference * 24} hours`;
+    return `${difference * 24} HOURS`;
   else if (difference > 1 && difference <= 2)
-    return `${difference.toFixed(0)} day`;
+    return `${difference.toFixed(0)} DAY`;
   else if (difference > 1 && difference <= 7)
-    return `${difference.toFixed(0)} days`;
+    return `${difference.toFixed(0)} DAYS`;
   else if (difference > 7 && difference <= 14)
-    return `${(difference / 7).toFixed(0)} week`;
-  else if (difference > 7) return `${(difference / 7).toFixed(0)} weeks`;
+    return `${(difference / 7).toFixed(0)} WEEK`;
+  else if (difference > 7) return `${(difference / 7).toFixed(0)} WEEKS`;
 };
 
 export default getTime;
