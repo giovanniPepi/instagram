@@ -44,7 +44,8 @@ button {
   letter-spacing: 0.2px;
   font-size: 10px;
   line-height: 12px;
-  margin-bottom: 1rem;
+  padding: var(--post-padding);
+  margin-bottom: 12px;
 }
 .postDescription {
   font-size: var(--font-size-description);
@@ -89,6 +90,7 @@ button {
     background-color: var(--white0);
     border: 1px solid var(--elevated-separator);
     border-radius: 8px;
+    margin-bottom: 12px;
   }
   .profile {
     display: flex;
@@ -182,8 +184,8 @@ button {
   }
   .answeringSection {
     display: flex;
-
     padding: var(--post-padding);
+    margin-bottom: 12px;
   }
   .commentAnswerInput {
     flex: 1;
