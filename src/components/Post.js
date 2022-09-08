@@ -152,13 +152,15 @@ const Post = ({
             </button>
           </div>
         )}
-
-        <p className="postDescription">{description}</p>
+        <div className="postDescriptionDiv">
+          <p className="primary">{authorUserName}</p>
+          <p className="postDescription">{description}</p>
+        </div>
       </div>
       <div className="postMetrics">
         <div className="commentSection">
           <span
-            className="postDescription secondary"
+            className="viewComments secondary"
             onClick={() => setShowComments(true)}
           >
             View all {comment.length} comments

@@ -47,9 +47,8 @@ button {
   padding: var(--post-padding);
   margin-bottom: 12px;
 }
-.postDescription {
+.viewComments {
   font-size: var(--font-size-description);
-
   padding: var(--post-padding);
 }
 .lowerPostSection {
@@ -190,5 +189,14 @@ button {
   .commentAnswerInput {
     flex: 1;
     border: none;
+  }
+
+  .postDescription {
+    font-size: var(--font-size-description);
+  }
+  .postDescriptionDiv {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 }
