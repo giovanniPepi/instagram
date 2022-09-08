@@ -124,7 +124,13 @@ const Post = ({
               <Heart />
             </button>
             <p>{like.length} likes</p>
-            <button onClick={() => setShowLikeModal(true)}>LIKELIST</button>
+            <button
+              onClick={() => {
+                setShowLikeModal(true);
+              }}
+            >
+              LIKELIST
+            </button>
             <button onClick={() => setShowLikeModal(false)}>
               HIDE LIKELIST
             </button>
@@ -136,7 +142,13 @@ const Post = ({
               <EmptyHeart />
             </button>
             <p>{like.length} likes</p>
-            <button onClick={() => setShowLikeModal(true)}>LIKELIST</button>
+            <button
+              onClick={() => {
+                setShowLikeModal(true);
+              }}
+            >
+              LIKELIST
+            </button>
             <button onClick={() => setShowLikeModal(false)}>
               HIDE LIKELIST
             </button>

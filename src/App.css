@@ -8,6 +8,9 @@
   --font-secondary: rgb(142, 142, 142);
   --red-heart: #ed4956;
   --modalRadius: 12px;
+  --timeline-padding: 20px 0;
+  --post-margin: 8px 4px 8px 8px;
+  --profile-pic-dimensions: 32px;
 }
 
 body > * {
@@ -24,11 +27,21 @@ button {
   background-color: var(--light-blue);
 }
 
-@media screen and (min-width: 800px) {
+/* font weight */
+
+.primary {
+  font-weight: var(--font-primary);
+}
+.secondary {
+  font-weight: var(--font-secondary);
+}
+
+@media screen and (min-width: 600px) {
   .app {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     background-color: var(--white1);
+    opacity: 1;
   }
 
   /* Header needs to be relative so likeModal can position itself*/
@@ -45,6 +58,7 @@ button {
     border: 1px solid black;
     height: 90vh;
     overflow: scroll;
+    padding: var(--timeline-padding);
   }
   .rightSide {
     grid-column: 2/3;
@@ -62,8 +76,9 @@ button {
     gap: 1rem;
   }
   .profilePic {
-    width: 30px;
-    border-radius: 25px;
+    width: var(--profile-pic-dimensions);
+    height: var(--profile-pic-dimensions);
+    border-radius: 50%;
   }
   .postPreview {
     display: flex;
@@ -71,11 +86,15 @@ button {
     width: 50vw;
   }
   .timelineImg {
-    max-width: 40vw;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
   }
   .postHeader {
     display: flex;
     align-items: center;
+    margin: var(--post-margin);
+    gap: 0.4rem;
   }
   .profilePicMini {
     width: 20px;
