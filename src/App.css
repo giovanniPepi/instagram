@@ -42,6 +42,7 @@ button {
   letter-spacing: 0.2px;
   font-size: 10px;
   line-height: 12px;
+  margin-bottom: 1rem;
 }
 .postDescription {
   font-size: var(--font-size-description);
