@@ -22,7 +22,6 @@ const Post = ({
   img,
   description,
   like,
-  hasLiked,
   comment,
   timestamp,
   authorUserName,
@@ -31,11 +30,10 @@ const Post = ({
   const [showComments, setShowComments] = useState(false);
   const [showLikeModal, setShowLikeModal] = useState(false);
   const { currentUserName, userImg } = UserAuth();
-
-  // console.log(currentUserName, userImg);
+  const [hasLiked, setHasLiked] = useState(false);
+  const [likeIndexToRemove, setLikeIndexToRemove] = useState(null);
 
   // unsubscribe from updates on each function to avoid infinite loop
-
   // https://stackoverflow.com/questions/46642652/how-to-remove-listener-for-documentsnapshot-events-google-cloud-firestore
 
   const subscribeLike = async () => {
@@ -76,8 +74,10 @@ const Post = ({
         snapshot.forEach(async (doc) => {
           const docRef = doc.ref;
 
+          // doesn't write to firestore if findIndex returns -1
+          if (likeIndexToRemove === -1) return;
           await updateDoc(docRef, {
-            like: arrayRemove(user.displayName),
+            like: arrayRemove(like[likeIndexToRemove]),
           });
           snapUsub();
         });
@@ -86,6 +86,26 @@ const Post = ({
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    // function that searches the liked array for the user
+    const indexCriteria = (e) => {
+      if (e.authorUserName === currentUserName) {
+        return true;
+      }
+    };
+
+    // finds the index of obj inside arary
+    const index = like.findIndex(indexCriteria);
+    setLikeIndexToRemove(index);
+    if (index !== -1) {
+      setHasLiked(true);
+    } else {
+      setHasLiked(false);
+    }
+
+    // checkLiked();
+  }, [currentUserName, like]);
 
   return (
     <div key={uniqid()} className="post">
@@ -102,50 +122,25 @@ const Post = ({
       <p>Posted {getTime(timestamp)} ago</p>
       <div className="postMetrics">
         {hasLiked ? (
-          like.length > 1 ? (
-            <span onClick={unsubscribeLike} style={{ color: "red" }}>
-              {like.length}
-              likes
-              <button onClick={() => setShowLikeModal(true)}>
-                SHOW WHO LIKED!
-              </button>
-              <button onClick={() => setShowLikeModal(false)}>
-                HIDE LIKES
-              </button>
-              {showLikeModal ? <LikeModal likeArray={like} /> : null}
-            </span>
-          ) : (
-            <span onClick={unsubscribeLike}>
-              {like.length}
-              like
-              <button onClick={() => setShowLikeModal(true)}>
-                SHOW WHO LIKED!
-              </button>
-              <button onClick={() => setShowLikeModal(false)}>
-                HIDE LIKES
-              </button>
-              {showLikeModal ? <LikeModal likeArray={like} /> : null}
-            </span>
-          )
-        ) : like.length > 1 ? (
-          <span onClick={subscribeLike}>
-            {like.length} likes
-            <button onClick={() => setShowLikeModal(true)}>
-              SHOW WHO LIKED!
+          <div>
+            <div onClick={unsubscribeLike}>DISLIKE</div>
+            <p>{like.length} likes</p>
+            <button onClick={() => setShowLikeModal(true)}>LIKELIST</button>
+            <button onClick={() => setShowLikeModal(false)}>
+              HIDE LIKELIST
             </button>
-            <button onClick={() => setShowLikeModal(false)}>HIDE LIKES</button>
-            {showLikeModal ? <LikeModal likeArray={like} /> : null}
-          </span>
+          </div>
         ) : (
-          <span onClick={subscribeLike}>
-            {like.length} like
-            <button onClick={() => setShowLikeModal(true)}>
-              SHOW WHO LIKED!
+          <div>
+            <button onClick={subscribeLike}>LIKE</button>
+            <p>{like.length} likes</p>
+            <button onClick={() => setShowLikeModal(true)}>LIKELIST</button>
+            <button onClick={() => setShowLikeModal(false)}>
+              HIDE LIKELIST
             </button>
-            <button onClick={() => setShowLikeModal(false)}>HIDE LIKES</button>
-            {showLikeModal ? <LikeModal likeArray={like} /> : null}
-          </span>
+          </div>
         )}
+
         {showComments ? (
           <span>
             <span onClick={() => setShowComments(false)}>Hide</span>

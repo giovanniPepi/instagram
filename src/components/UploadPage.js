@@ -5,14 +5,12 @@ import { v4 } from "uuid";
 import { UserAuth } from "../context/AuthContext";
 import { storage } from "../firebase";
 import postToFirestore from "../functions/postToFirestore";
-import blank from "../img/blank.png";
-import Post from "./Post";
 
 const UploadPage = () => {
   //display uploaded IMG
   const [imgFile, setimgFile] = useState(null);
   const [description, setDescription] = useState(null);
-  const [userImg, setUserImg] = useState(blank);
+  const [userImg, setUserImg] = useState(null);
 
   // auth context
   const { user } = UserAuth();
@@ -41,6 +39,10 @@ const UploadPage = () => {
 
   const uploadPost = () => {
     const userName = user.displayName;
+    if (!imgFile || !description || !userName || !userImg) {
+      console.log("invalid data");
+      return;
+    }
     postToFirestore(imgFile, description, userName, userImg);
   };
 
