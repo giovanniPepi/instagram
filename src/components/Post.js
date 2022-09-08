@@ -30,7 +30,6 @@ const Post = ({
   const [showComments, setShowComments] = useState(false);
   const [showLikeModal, setShowLikeModal] = useState(false);
   const { currentUserName, userImg } = UserAuth();
-  const [hasLiked, setHasLiked] = useState(false);
   const [likeIndexToRemove, setLikeIndexToRemove] = useState(null);
 
   // unsubscribe from updates on each function to avoid infinite loop
@@ -98,11 +97,6 @@ const Post = ({
     // finds the index of obj inside arary
     const index = like.findIndex(indexCriteria);
     setLikeIndexToRemove(index);
-    if (index !== -1) {
-      setHasLiked(true);
-    } else {
-      setHasLiked(false);
-    }
 
     // checkLiked();
   }, [currentUserName, like]);
@@ -121,7 +115,7 @@ const Post = ({
       <p>{description}</p>
       <p>Posted {getTime(timestamp)} ago</p>
       <div className="postMetrics">
-        {hasLiked ? (
+        {likeIndexToRemove !== -1 ? (
           <div>
             <div onClick={unsubscribeLike}>DISLIKE</div>
             <p>{like.length} likes</p>
