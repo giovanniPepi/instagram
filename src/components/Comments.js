@@ -94,7 +94,9 @@ const Comments = ({ commentArray, id }) => {
             setCommentText(e.target.value);
           }}
         />
-        <button onClick={postCommentToFirestore}>Post</button>
+        <button onClick={postCommentToFirestore} className="postBtn">
+          Post
+        </button>
       </div>
     </div>
   );

@@ -15,6 +15,9 @@
   --post-padding: 0 16px;
   --post-separator: rgb(239, 239, 239);
   --elevated-separator: rgb(219, 219, 219);
+  font-size: 14px;
+  --inactive-opacity: 0.3;
+  --primary-button: rgb(0, 149, 246);
 }
 
 body > * {
@@ -28,7 +31,7 @@ p {
 }
 button {
   border: none;
-  background-color: var(--light-blue);
+  background-color: inherit;
 }
 
 /* font weight */
@@ -198,5 +201,10 @@ button {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+  .postBtn {
+    font-weight: bold;
+    color: var(--primary-button);
+    opacity: var(--inactive-opacity);
   }
 }
