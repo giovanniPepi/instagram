@@ -8,7 +8,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { v4 } from "uuid";
@@ -18,6 +18,9 @@ import Alert from "../icons/Alert";
 const Comments = ({ commentArray, id }) => {
   const { user, userImg, currentUserName } = UserAuth();
   const [commentText, setCommentText] = useState(null);
+  const [btnStyle, setbtnStyle] = useState({
+    opacity: 0.3,
+  });
 
   const postCommentToFirestore = async () => {
     const postRef = collection(db, "postDB");
@@ -42,6 +45,11 @@ const Comments = ({ commentArray, id }) => {
       subscribeComment();
     });
   };
+
+  useEffect(() => {
+    if (commentText === "") setbtnStyle({ opacity: 0.3 });
+    else setbtnStyle({ opacity: 1 });
+  }, [commentText]);
 
   return (
     <div className="commentSection">
@@ -94,7 +102,11 @@ const Comments = ({ commentArray, id }) => {
             setCommentText(e.target.value);
           }}
         />
-        <button onClick={postCommentToFirestore} className="postBtn">
+        <button
+          onClick={postCommentToFirestore}
+          className="postBtn"
+          style={btnStyle}
+        >
           Post
         </button>
       </div>
