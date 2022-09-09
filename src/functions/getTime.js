@@ -29,9 +29,9 @@ const getTime = (unix) => {
   if (difference <= 0.0833) return `${difference * 24} HOUR`;
   else if (difference > 0.0833 && difference <= 1)
     return `${difference * 24} HOURS`;
-  else if (difference > 1 && difference <= 2)
+  else if (difference > 1 && difference <= 1.5)
     return `${difference.toFixed(0)} DAY`;
-  else if (difference > 1 && difference <= 7)
+  else if (difference > 1.5 && difference <= 7)
     return `${difference.toFixed(0)} DAYS`;
   else if (difference > 7 && difference <= 14)
     return `${(difference / 7).toFixed(0)} WEEK`;

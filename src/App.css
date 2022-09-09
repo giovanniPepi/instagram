@@ -35,8 +35,7 @@ button {
 }
 /*reset*/
 input:focus {
-  background-color: white;
-  border: none;
+  outline: none;
 }
 
 /* font weight */
