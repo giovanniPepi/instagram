@@ -154,16 +154,16 @@ input:focus {
     align-items: space-between;
     position: absolute;
     top: 45%;
-    left: 40%;
+    left: 30%;
     gap: 1rem;
     padding: 1rem;
     border: 1px solid black;
     background-color: var(--white0);
     border-radius: var(--modalRadius);
+    width: 40vw;
   }
   .likeLine {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 1rem;
   }
@@ -210,5 +210,30 @@ input:focus {
     font-weight: bold;
     color: var(--primary-button);
     /*     opacity: var(--inactive-opacity); */
+  }
+  .likeModalHeader {
+    display: flex;
+    justify-content: center;
+  }
+  .likeLineParent {
+    display: flex;
+    justify-content: space-between;
+  }
+  .follow {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white0);
+    background-color: var(--light-blue);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 4px 12px;
+    cursor: pointer;
+    line-height: 18px;
+    position: relative;
+  }
+  .followInside {
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 100%;
   }
 }

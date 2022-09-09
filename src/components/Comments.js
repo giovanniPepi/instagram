@@ -12,8 +12,6 @@ import { useEffect, useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { v4 } from "uuid";
-import getTime from "../functions/getTime";
-import Alert from "../icons/Alert";
 
 const Comments = ({ commentArray, id }) => {
   const { user, userImg, currentUserName } = UserAuth();

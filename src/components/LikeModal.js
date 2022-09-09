@@ -1,21 +1,23 @@
 import { v4 } from "uuid";
 
 const LikeModal = ({ like }) => {
-  console.log(like, like[0].userImg);
-
   return (
     <div className="likeModal">
-      {/*      {likeArray.length > 0
-        ? likeArray.map((like) => {
-            return <span key={v4()}>{like}</span>;
-          })
-        : null} */}
+      <div className="likeModalHeader">
+        <p className="primary">LIKES</p>
+      </div>
+      <div className="postSeparator"></div>
 
       {like.map((obj) => {
         return (
-          <div className="likeLine" key={v4()}>
-            <img src={obj.userImg} alt="profile" className="profilePic" />
-            <p>{obj.authorUserName}</p>
+          <div className="likeLineParent" key={v4()}>
+            <div className="likeLine">
+              <img src={obj.userImg} alt="profile" className="profilePic" />
+              <p className="primary">{obj.authorUserName}</p>
+            </div>
+            <button className="follow">
+              <div className="followInside">Follow</div>
+            </button>
           </div>
         );
       })}
