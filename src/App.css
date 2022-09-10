@@ -66,19 +66,19 @@ input:focus {
 }
 
 @media screen and (min-width: 600px) {
+  /* App needs to be relative so likeModal can position itself*/
   .app {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     background-color: var(--white1);
-  }
 
-  /* Header needs to be relative so likeModal can position itself*/
+    position: relative;
+  }
 
   header {
     grid-column: 1/6;
     grid-row: 1/2;
     border: 1px solid black;
-    position: relative;
   }
 
   .timeline {
@@ -240,7 +240,6 @@ input:focus {
     padding: 4px 12px;
     cursor: pointer;
     line-height: 18px;
-    position: relative;
     min-height: 30px;
     max-height: 30px;
   }
