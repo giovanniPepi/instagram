@@ -1,5 +1,3 @@
-import { getAuth } from "firebase/auth";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 

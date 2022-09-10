@@ -70,7 +70,6 @@ input:focus {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     background-color: var(--white1);
-    opacity: 1;
   }
 
   /* Header needs to be relative so likeModal can position itself*/
@@ -148,25 +147,6 @@ input:focus {
     gap: 0.4rem;
   }
 
-  .likeModal {
-    display: flex;
-    flex-direction: column;
-    align-items: space-between;
-    position: absolute;
-    top: 45%;
-    left: 30%;
-    gap: 1rem;
-    padding: 1rem;
-    border: 1px solid black;
-    background-color: var(--white0);
-    border-radius: var(--modalRadius);
-    width: 40vw;
-  }
-  .likeLine {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
   /* resets SVG Buttons*/
   .heart {
     background-color: inherit;
@@ -211,6 +191,37 @@ input:focus {
     color: var(--primary-button);
     /*     opacity: var(--inactive-opacity); */
   }
+
+  /*Parent functions as an overlay!*/
+  /*https://newdevzone.com/posts/how-to-apply-blur-effect-to-background-when-modal-is-opened-in-react*/
+  .likeModalParent {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .likeModal {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid black;
+    background-color: var(--white0);
+    border-radius: var(--modalRadius);
+    width: 40vw;
+  }
+  .likeLine {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .likeModalHeader {
     display: flex;
     justify-content: center;

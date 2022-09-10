@@ -100,33 +100,7 @@ const Post = ({
     setLikeIndexToRemove(index);
 
     // checkLiked();
-  }, [currentUserName, like]);
-
-  // custom hook to remove modal when clicking outside
-  // https://www.youtube.com/watch?v=eWO1b6EoCnQ
-  let useClickOutside = (handler) => {
-    let domNode = useRef();
-
-    useEffect(() => {
-      let maybeHandler = (event) => {
-        if (!domNode.current.contains(event.target)) {
-          handler();
-        }
-      };
-
-      document.addEventListener("mousedown", maybeHandler);
-
-      return () => {
-        document.removeEventListener("mousedown", maybeHandler);
-      };
-    });
-
-    return domNode;
-  };
-
-  let domNode = useClickOutside(() => {
-    setShowLikeModal(false);
-  });
+  }, [currentUserName, like, showLikeModal]);
 
   return (
     <div key={uniqid()} className="post">
@@ -141,7 +115,7 @@ const Post = ({
       <img src={img} alt={`${id}'s post`} className="timelineImg" />
       <div className="lowerPostSection">
         {likeIndexToRemove !== -1 ? (
-          <div className="likeSection" ref={domNode}>
+          <div className="likeSection">
             <button className="heart" onClick={unsubscribeLike}>
               <Heart />
             </button>
@@ -152,10 +126,12 @@ const Post = ({
             >
               {like.length} likes
             </button>
-            {showLikeModal ? <LikeModal like={like} /> : null}
+            {showLikeModal ? (
+              <LikeModal like={like} setShowLikeModal={setShowLikeModal} />
+            ) : null}
           </div>
         ) : (
-          <div className="likeSection" ref={domNode}>
+          <div className="likeSection">
             <button className="heart" onClick={subscribeLike}>
               <EmptyHeart />
             </button>
@@ -166,6 +142,9 @@ const Post = ({
             >
               {like.length} likes
             </button>
+            {showLikeModal ? (
+              <LikeModal like={like} setShowLikeModal={setShowLikeModal} />
+            ) : null}
           </div>
         )}
         <div className="postDescriptionDiv">
