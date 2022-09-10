@@ -43,7 +43,12 @@ const LikeModal = ({ like, setShowLikeModal }) => {
                 <img src={obj.userImg} alt="profile" className="profilePic" />
                 <p className="primary">{obj.authorUserName}</p>
               </div>
-              <button className="follow">
+              <button
+                className="follow"
+                onClick={() => {
+                  setShowLikeModal(false);
+                }}
+              >
                 <div className="followInside">Follow</div>
               </button>
             </div>
