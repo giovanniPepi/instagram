@@ -8,12 +8,11 @@ import {
   arrayUnion,
   limit,
 } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import uniqid from "uniqid";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import getTime from "../functions/getTime";
-import CommentIcon from "../icons/CommentIcon";
 import EmptyHeart from "../icons/EmptyHeart";
 import Heart from "../icons/Heart";
 import Comments from "./Comments";
@@ -50,7 +49,6 @@ const Post = ({
           const docRef = doc.ref;
 
           if (!currentUserName || !userImg) {
-            console.log("fudeu");
             return;
           }
           await updateDoc(docRef, {
@@ -104,6 +102,32 @@ const Post = ({
     // checkLiked();
   }, [currentUserName, like]);
 
+  // custom hook to remove modal when clicking outside
+  // https://www.youtube.com/watch?v=eWO1b6EoCnQ
+  let useClickOutside = (handler) => {
+    let domNode = useRef();
+
+    useEffect(() => {
+      let maybeHandler = (event) => {
+        if (!domNode.current.contains(event.target)) {
+          handler();
+        }
+      };
+
+      document.addEventListener("mousedown", maybeHandler);
+
+      return () => {
+        document.removeEventListener("mousedown", maybeHandler);
+      };
+    });
+
+    return domNode;
+  };
+
+  let domNode = useClickOutside(() => {
+    setShowLikeModal(false);
+  });
+
   return (
     <div key={uniqid()} className="post">
       <div className="postHeader">
@@ -117,38 +141,30 @@ const Post = ({
       <img src={img} alt={`${id}'s post`} className="timelineImg" />
       <div className="lowerPostSection">
         {likeIndexToRemove !== -1 ? (
-          <div className="likeSection">
+          <div className="likeSection" ref={domNode}>
             <button className="heart" onClick={unsubscribeLike}>
               <Heart />
             </button>
-            <p>{like.length} likes</p>
             <button
               onClick={() => {
                 setShowLikeModal(true);
               }}
             >
-              LIKELIST
-            </button>
-            <button onClick={() => setShowLikeModal(false)}>
-              HIDE LIKELIST
+              {like.length} likes
             </button>
             {showLikeModal ? <LikeModal like={like} /> : null}
           </div>
         ) : (
-          <div className="likeSection">
+          <div className="likeSection" ref={domNode}>
             <button className="heart" onClick={subscribeLike}>
               <EmptyHeart />
             </button>
-            <p>{like.length} likes</p>
             <button
               onClick={() => {
                 setShowLikeModal(true);
               }}
             >
-              LIKELIST
-            </button>
-            <button onClick={() => setShowLikeModal(false)}>
-              HIDE LIKELIST
+              {like.length} likes
             </button>
           </div>
         )}

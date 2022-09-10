@@ -230,6 +230,8 @@ input:focus {
     cursor: pointer;
     line-height: 18px;
     position: relative;
+    min-height: 30px;
+    max-height: 30px;
   }
   .followInside {
     padding-left: 16px;
