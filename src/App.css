@@ -20,7 +20,7 @@
   --primary-button: rgb(0, 149, 246);
 }
 
-body > * {
+body {
   margin: 0;
   padding: 0;
   color: var(--font-primary);
@@ -71,8 +71,8 @@ input:focus {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     background-color: var(--white1);
-
     position: relative;
+    height: 100vh;
   }
 
   header {
@@ -200,7 +200,7 @@ input:focus {
     left: 0%;
     height: 100%;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(1, 1, 1, 0.65);
     display: flex;
     justify-content: center;
     align-items: center;
