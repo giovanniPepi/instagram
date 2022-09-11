@@ -82,10 +82,9 @@ input:focus {
   }
 
   .timeline {
-    grid-column: 2/5;
-    height: 90vh;
+    grid-column: 1/6;
+    padding: 0 60rem 0 34rem;
     overflow: scroll;
-    padding: var(--timeline-padding);
   }
   .rightSide {
     grid-column: 2/3;
