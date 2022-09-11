@@ -13,19 +13,9 @@ const PostCompletePage = ({
   setShowComments,
 }) => {
   const domNode = useClickOutside(() => {
+    console.log("dom node activated");
     setShowComments(false);
   });
-
-  console.log(
-    id,
-    img,
-    description,
-    like,
-    comment,
-    timestamp,
-    authorUserName,
-    authorUserImg
-  );
 
   return (
     <div className="postOverlayParent">
@@ -41,7 +31,7 @@ const PostCompletePage = ({
           <div className="postHeaderContainer">
             <div className="postHeader">
               <img
-                className="profilePic"
+                className="profilePicMini"
                 src={authorUserImg}
                 alt={`${authorUserName}'s profile`}
               />
@@ -53,7 +43,7 @@ const PostCompletePage = ({
           <div className="rightCompletePostLower">
             <div className="postHeader">
               <img
-                className="profilePic"
+                className="profilePicMini"
                 src={authorUserImg}
                 alt={`${authorUserName}'s profile`}
               />
@@ -66,6 +56,7 @@ const PostCompletePage = ({
               commentArray={comment}
               authorUserImg={authorUserImg}
               id={id}
+              domNode={domNode}
             />
           </div>
         </div>

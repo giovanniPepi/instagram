@@ -86,7 +86,7 @@ const Comments = ({ commentArray, id }) => {
                   className="profilePicMini"
                 />
                 <p className="primary">{commentArray[1].userName}</p>
-                <p>{commentArray[1].commentText}</p>
+                <p className="commentText">{commentArray[1].commentText}</p>
               </>
             ) : null}
           </div>
