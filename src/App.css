@@ -82,10 +82,17 @@ input:focus {
   }
 
   .timeline {
-    overflow: scroll;
     max-width: 40vw;
     margin-right: 10rem;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
+
+  /*Scrollbars */
+  .timeline::-webkit-scrollbar {
+    display: none;
+  }
+
   .rightSide {
     grid-column: 2/3;
     border: 1px solid black;
