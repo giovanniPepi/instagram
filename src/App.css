@@ -68,23 +68,23 @@ input:focus {
 @media screen and (min-width: 600px) {
   /* App needs to be relative so likeModal can position itself*/
   .app {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: var(--white1);
     position: relative;
     height: 100vh;
   }
 
   header {
-    grid-column: 1/6;
-    grid-row: 1/2;
     border: 1px solid black;
+    width: 100%;
   }
 
   .timeline {
-    grid-column: 1/6;
-    padding: 0 59.5rem 0 34.5rem;
     overflow: scroll;
+    max-width: 40vw;
+    margin-right: 10rem;
   }
   .rightSide {
     grid-column: 2/3;
@@ -193,7 +193,8 @@ input:focus {
 
   /*Parent functions as an overlay!*/
   /*https://newdevzone.com/posts/how-to-apply-blur-effect-to-background-when-modal-is-opened-in-react*/
-  .likeModalParent {
+  .likeModalParent,
+  .postOverlayParent {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -245,6 +246,23 @@ input:focus {
   .followInside {
     padding-left: 16px;
     padding-right: 16px;
-    height: 100%;
+  }
+  .postOverlay {
+    display: flex;
+    border: 1px solid black;
+    background-color: var(--white0);
+    border-radius: var(--modalRadius);
+    max-width: 75vw;
+    background-color: rgba(1, 1, 1);
+  }
+  .postOverlay > * {
+    background-color: rgb(255, 255, 255);
+  }
+  .rightCompletePost {
+    display: flex;
+    flex-direction: column;
+  }
+  .timelineImg.complete {
+    max-width: 45vw;
   }
 }

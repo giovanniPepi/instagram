@@ -14,7 +14,7 @@ import { db } from "../firebase";
 import { v4 } from "uuid";
 
 const Comments = ({ commentArray, id }) => {
-  const { user, userImg, currentUserName } = UserAuth();
+  const { userImg, currentUserName } = UserAuth();
   const [commentText, setCommentText] = useState(null);
   const [btnStyle, setbtnStyle] = useState({
     opacity: 0.3,

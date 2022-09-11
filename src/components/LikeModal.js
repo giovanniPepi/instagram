@@ -2,7 +2,7 @@ import { v4 } from "uuid";
 import useClickOutside from "../functions/useClickOutside";
 
 const LikeModal = ({ like, setShowLikeModal }) => {
-  let domNode = useClickOutside(() => {
+  const domNode = useClickOutside(() => {
     setShowLikeModal(false);
   });
 

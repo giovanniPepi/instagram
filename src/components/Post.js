@@ -8,7 +8,7 @@ import {
   arrayUnion,
   limit,
 } from "firebase/firestore";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import uniqid from "uniqid";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
@@ -17,6 +17,7 @@ import EmptyHeart from "../icons/EmptyHeart";
 import Heart from "../icons/Heart";
 import Comments from "./Comments";
 import LikeModal from "./LikeModal";
+import PostCompletePage from "./PostCompletePage";
 
 const Post = ({
   id,
@@ -111,7 +112,12 @@ const Post = ({
         />
         <p className="primary">{authorUserName}</p>
       </div>
-      <img src={img} alt={`${id}'s post`} className="timelineImg" />
+      <img
+        src={img}
+        alt={`${id}'s post`}
+        className="timelineImg"
+        onClick={() => setShowComments(true)}
+      />
       <div className="lowerPostSection">
         {likeIndexToRemove !== -1 ? (
           <div className="likeSection">
@@ -164,6 +170,19 @@ const Post = ({
             authorUserImg={authorUserImg}
             id={id}
           />
+          {showComments ? (
+            <PostCompletePage
+              setShowComments={setShowComments}
+              id={id}
+              img={img}
+              description={description}
+              like={like}
+              comment={comment}
+              timestamp={timestamp}
+              authorUserName={authorUserName}
+              authorUserImg={authorUserImg}
+            />
+          ) : null}
         </div>
       </div>
 
