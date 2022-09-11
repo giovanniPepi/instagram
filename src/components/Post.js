@@ -20,7 +20,6 @@ import LikeModal from "./LikeModal";
 
 const Post = ({
   id,
-  user,
   img,
   description,
   like,

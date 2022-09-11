@@ -1,29 +1,7 @@
-import { useEffect, useRef } from "react";
 import { v4 } from "uuid";
+import useClickOutside from "../functions/useClickOutside";
 
 const LikeModal = ({ like, setShowLikeModal }) => {
-  // custom hook to remove modal when clicking outside
-  // https://www.youtube.com/watch?v=eWO1b6EoCnQ
-  let useClickOutside = (handler) => {
-    let domNode = useRef();
-
-    useEffect(() => {
-      let maybeHandler = (event) => {
-        if (!domNode.current.contains(event.target)) {
-          handler();
-        }
-      };
-
-      document.addEventListener("mousedown", maybeHandler);
-
-      return () => {
-        document.removeEventListener("mousedown", maybeHandler);
-      };
-    });
-
-    return domNode;
-  };
-
   let domNode = useClickOutside(() => {
     setShowLikeModal(false);
   });

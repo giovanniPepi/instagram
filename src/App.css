@@ -83,7 +83,7 @@ input:focus {
 
   .timeline {
     grid-column: 1/6;
-    padding: 0 60rem 0 34rem;
+    padding: 0 59.5rem 0 34.5rem;
     overflow: scroll;
   }
   .rightSide {
