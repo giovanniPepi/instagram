@@ -38,15 +38,17 @@ const PostCompletePage = ({
           />
         </div>
         <div className="rightCompletePost">
-          <div className="postHeader">
-            <img
-              className="profilePic"
-              src={authorUserImg}
-              alt={`${authorUserName}'s profile`}
-            />
-            <p className="primary">{authorUserName}</p>
+          <div className="postHeaderContainer">
+            <div className="postHeader">
+              <img
+                className="profilePic"
+                src={authorUserImg}
+                alt={`${authorUserName}'s profile`}
+              />
+              <p className="primary">{authorUserName}</p>
+            </div>
+            <div className="postSeparator"></div>
           </div>
-          <div className="postSeparator"></div>
 
           <div className="rightCompletePostLower">
             <div className="postHeader">
@@ -60,14 +62,11 @@ const PostCompletePage = ({
                 <p className="postDescription">{description}</p>
               </div>
             </div>
-
-            <div className="postMetrics">
-              <Comments
-                commentArray={comment}
-                authorUserImg={authorUserImg}
-                id={id}
-              />
-            </div>
+            <Comments
+              commentArray={comment}
+              authorUserImg={authorUserImg}
+              id={id}
+            />
           </div>
         </div>
       </div>

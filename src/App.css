@@ -146,6 +146,7 @@ input:focus {
     flex-direction: column;
     font-weight: bold;
     gap: 0.5rem;
+    flex: 1;
   }
   .likeSection {
     display: flex;
@@ -163,6 +164,7 @@ input:focus {
     display: flex;
     gap: 0.5rem;
     flex-direction: column;
+    flex: 1;
   }
   .commentSection.collapsed {
     flex-direction: row;
@@ -178,6 +180,7 @@ input:focus {
     display: flex;
     padding: var(--post-padding);
     margin-bottom: 12px;
+    flex: 1;
   }
   .commentAnswerInput {
     flex: 1;
@@ -260,6 +263,7 @@ input:focus {
     background-color: var(--white0);
     border-radius: var(--modalRadius);
     max-width: 75vw;
+    min-height: 50vh;
     background-color: rgba(1, 1, 1);
   }
   .postOverlay > * {
@@ -268,6 +272,21 @@ input:focus {
   .rightCompletePost {
     display: flex;
     flex-direction: column;
+    align-content: space-between;
+  }
+  .rightCompletePostLower {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .commentSection {
+    flex: 1;
+  }
+  .commentSectionHigher {
+    flex: 1;
+  }
+  .answeringSection {
+    flex: 0;
   }
   .timelineImg.complete {
     max-width: 45vw;
