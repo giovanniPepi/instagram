@@ -37,7 +37,7 @@ const PostCompletePage = ({
               <p className="primary">{authorUserName}</p>
             </div>
           </div>
-          <div className="postSeparator"></div>
+          <div className="postSeparator gridSeparate"></div>
 
           <div className="rightCompletePostLower">
             <div className="comment">
@@ -46,10 +46,8 @@ const PostCompletePage = ({
                 src={authorUserImg}
                 alt={`${authorUserName}'s profile`}
               />
-              <div className="postDescriptionDiv">
-                <p className="primary">{authorUserName}</p>
-                <p className="postDescription">{description}</p>
-              </div>
+              <p className="primary">{authorUserName}</p>
+              <p className="postDescription">{description}</p>
             </div>
             <Comments
               commentArray={comment}

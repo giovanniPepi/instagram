@@ -292,9 +292,9 @@ input:focus {
     gap: 0.5rem;
   }
   .rightCompletePostLower {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     margin: 0 0 8px 0;
   }
   .commentSection {
