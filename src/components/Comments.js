@@ -49,8 +49,6 @@ const Comments = ({ commentArray, id, showComplete }) => {
     else setbtnStyle({ opacity: 1 });
   }, [commentText]);
 
-  console.log(commentArray, "showcomplete? ", showComplete);
-
   return (
     <>
       {showComplete ? (
