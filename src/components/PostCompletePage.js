@@ -13,7 +13,6 @@ const PostCompletePage = ({
   setShowComments,
 }) => {
   const domNode = useClickOutside(() => {
-    console.log("dom node activated");
     setShowComments(false);
   });
 

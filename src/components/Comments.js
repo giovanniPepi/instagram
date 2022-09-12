@@ -45,9 +45,10 @@ const Comments = ({ commentArray, id, showComplete }) => {
   };
 
   useEffect(() => {
-    if (commentText === "") setbtnStyle({ opacity: 0.3 });
+    if (commentText === "" || commentText === null)
+      setbtnStyle({ opacity: 0.3 });
     else setbtnStyle({ opacity: 1 });
-  }, [commentText]);
+  }, [commentText, showComplete]);
 
   return (
     <>
@@ -89,7 +90,9 @@ const Comments = ({ commentArray, id, showComplete }) => {
                     className="profilePicMini"
                   />
                   <p className="primary">{commentArray[0].userName}</p>
-                  <span>{commentArray[0].commentText}</span>
+                  <span className="commentText">
+                    {commentArray[0].commentText}
+                  </span>
                 </>
               ) : null}
             </div>

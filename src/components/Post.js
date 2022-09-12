@@ -39,7 +39,7 @@ const Post = ({
 
   const subscribeLike = async () => {
     try {
-      console.log("subs");
+      // console.log("subs");
       const postRef = collection(db, "postDB");
       const q = query(postRef, where("id", "==", `${id}`), limit(1));
 
@@ -65,7 +65,7 @@ const Post = ({
 
   const unsubscribeLike = async () => {
     try {
-      console.log("unsub");
+      // console.log("unsub");
       const postRef = collection(db, "postDB");
       const q = query(postRef, where("id", "==", `${id}`), limit(1));
 
@@ -104,7 +104,7 @@ const Post = ({
 
   return (
     <div key={v4()} className="post">
-      <div className="postHeader">
+      <div className="postHeader postTimeline">
         <img
           className="profilePic"
           src={authorUserImg}
@@ -165,10 +165,13 @@ const Post = ({
           >
             View all {comment.length} comments
           </span>
+          <p className="secondary hoursAgo">{getTime(timestamp)} AGO</p>
+
           <Comments
             commentArray={comment}
             authorUserImg={authorUserImg}
             id={id}
+            btnStyle={{ opacity: 0.3 }}
           />
           {showComments ? (
             <PostCompletePage
@@ -185,8 +188,6 @@ const Post = ({
           ) : null}
         </div>
       </div>
-
-      <p className="secondary hoursAgo">{getTime(timestamp)} AGO</p>
     </div>
   );
 };

@@ -65,18 +65,18 @@ input:focus {
   gap: 0.3rem;
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 800px) {
   /* App needs to be relative so likeModal can position itself*/
   .app {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     background-color: var(--white1);
     position: relative;
     height: 100vh;
   }
 
   header {
-    grid-column: 1/6;
+    grid-column: 1/5;
     grid-row: 1/2;
     border: 1px solid black;
     width: 100%;
@@ -147,12 +147,12 @@ input:focus {
   .postHeader {
     gap: 0.7rem;
   }
-  . .postMetrics {
+  .postMetrics {
     display: flex;
     flex-direction: column;
-    font-weight: bold;
     gap: 0.5rem;
     flex: 1;
+    margin-top: 8px;
   }
   .likeSection {
     display: flex;
@@ -315,5 +315,8 @@ input:focus {
 
   .commentText {
     flex: 1;
+  }
+  .postTimeline {
+    margin: 8px 4px 8px 12px;
   }
 }
