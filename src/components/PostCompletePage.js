@@ -12,14 +12,9 @@ const PostCompletePage = ({
   authorUserImg,
   setShowComments,
 }) => {
-  const domNode = useClickOutside(() => {
-    console.log("dom node activated");
-    setShowComments(false);
-  });
-
   return (
     <div className="postOverlayParent">
-      <div className="postOverlay" ref={domNode}>
+      <div className="postOverlay">
         <div className="leftCompletePost">
           <img
             src={img}
@@ -56,7 +51,6 @@ const PostCompletePage = ({
               commentArray={comment}
               authorUserImg={authorUserImg}
               id={id}
-              domNode={domNode}
               showComplete={true}
             />
           </div>

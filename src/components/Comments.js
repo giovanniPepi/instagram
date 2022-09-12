@@ -49,52 +49,79 @@ const Comments = ({ commentArray, id, showComplete }) => {
     else setbtnStyle({ opacity: 1 });
   }, [commentText]);
 
+  console.log(commentArray, "showcomplete? ", showComplete);
+
   return (
-    <div className="commentSection">
-      <div className="commentSectionHigher">
-        {/* only firstsecond comment if it exists */}
-        {commentArray[0] ? (
-          <div className="comment" key={v4()}>
-            {commentArray[0].userImg &&
-            commentArray[0].userName &&
-            commentArray[0].commentText &&
-            commentArray[0].timestamp ? (
-              <>
-                <img
-                  src={commentArray[0].userImg}
-                  alt="avatar"
-                  className="profilePicMini"
-                />
-                <p className="primary">{commentArray[0].userName}</p>
-                <span>{commentArray[0].commentText}</span>
-              </>
-            ) : null}
-          </div>
-        ) : null}
+    <>
+      {showComplete ? (
+        commentArray.map((comment) => {
+          return (
+            <div className="comment" key={v4()}>
+              {/* Checks if all info are valid before rendering */}
+              {comment.userImg &&
+              comment.userName &&
+              comment.commentText &&
+              comment.timestamp ? (
+                <>
+                  <img
+                    src={comment.userImg}
+                    alt="avatar"
+                    className="profilePicMini"
+                  />
+                  <p className="primary">{comment.userName}</p>
+                  <span>{comment.commentText}</span>
+                </>
+              ) : null}
+            </div>
+          );
+        })
+      ) : (
+        <div className="commentSectionHigher">
+          {/* only first and second comment if it exists */}
+          {commentArray[0] ? (
+            <div className="comment" key={v4()}>
+              {commentArray[0].userImg &&
+              commentArray[0].userName &&
+              commentArray[0].commentText &&
+              commentArray[0].timestamp ? (
+                <>
+                  <img
+                    src={commentArray[0].userImg}
+                    alt="avatar"
+                    className="profilePicMini"
+                  />
+                  <p className="primary">{commentArray[0].userName}</p>
+                  <span>{commentArray[0].commentText}</span>
+                </>
+              ) : null}
+            </div>
+          ) : null}
 
-        {/* only display second comment if it exists */}
-        {commentArray[1] ? (
-          <div className="comment" key={v4()}>
-            {commentArray[1].userImg &&
-            commentArray[1].userName &&
-            commentArray[1].commentText &&
-            commentArray[1].timestamp ? (
-              <>
-                <img
-                  src={commentArray[1].userImg}
-                  alt="avatar"
-                  className="profilePicMini"
-                />
-                <p className="primary">{commentArray[1].userName}</p>
-                <span className="commentText">
-                  {commentArray[1].commentText}
-                </span>
-              </>
-            ) : null}
-          </div>
-        ) : null}
-      </div>
+          {/* only display second comment if it exists */}
+          {commentArray[1] ? (
+            <div className="comment" key={v4()}>
+              {commentArray[1].userImg &&
+              commentArray[1].userName &&
+              commentArray[1].commentText &&
+              commentArray[1].timestamp ? (
+                <>
+                  <img
+                    src={commentArray[1].userImg}
+                    alt="avatar"
+                    className="profilePicMini"
+                  />
+                  <p className="primary">{commentArray[1].userName}</p>
+                  <span className="commentText">
+                    {commentArray[1].commentText}
+                  </span>
+                </>
+              ) : null}
+            </div>
+          ) : null}
+        </div>
+      )}
 
+      {/* Post separator and answer section */}
       <div className="postSeparator"></div>
       <div className="answeringSection">
         <input
@@ -113,7 +140,7 @@ const Comments = ({ commentArray, id, showComplete }) => {
           Post
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

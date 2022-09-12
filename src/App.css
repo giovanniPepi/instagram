@@ -279,7 +279,7 @@ input:focus {
   }
 
   .timelineImg.complete {
-    object-fit: fill;
+    object-fit: cover;
   }
 
   .rightCompletePost {
