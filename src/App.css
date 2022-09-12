@@ -68,24 +68,26 @@ input:focus {
 @media screen and (min-width: 700px) {
   /* App needs to be relative so likeModal can position itself*/
   .app {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     background-color: var(--white1);
     position: relative;
     height: 100vh;
   }
 
   header {
+    grid-column: 1/6;
+    grid-row: 1/2;
     border: 1px solid black;
     width: 100%;
   }
 
   .timeline {
+    grid-column: 2/4;
     max-width: 40vw;
-    margin-right: 10rem;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+    overflow: scroll;
   }
 
   /*Scrollbars */
