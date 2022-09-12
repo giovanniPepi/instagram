@@ -1,19 +1,19 @@
-import { collection, onSnapshot, query } from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { useState } from "react";
 import { useEffect } from "react";
 import { db } from "../firebase";
-import uniqid from "uniqid";
 import Post from "./Post";
 import { UserAuth } from "../context/AuthContext";
+import { v4 } from "uuid";
 
 const Timeline = () => {
-  const { user, currentUserName } = UserAuth();
+  const { user } = UserAuth();
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     try {
       const colRef = collection(db, "postDB");
-      const q = query(colRef);
+      const q = query(colRef, orderBy("timestamp", "desc"));
       // https://stackoverflow.com/questions/69184182/react-firestore-listen-to-changes-in-firebase-collection-in-a-react-componen
       const snap = onSnapshot(q, (querySnapshot) => {
         setPosts(
@@ -35,7 +35,7 @@ const Timeline = () => {
         {posts.map((post) => {
           return (
             <Post
-              key={uniqid()}
+              key={v4()}
               user={user}
               id={post.id}
               img={post.img}

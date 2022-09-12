@@ -9,7 +9,7 @@ import {
   limit,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import uniqid from "uniqid";
+import { v4 } from "uuid";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import getTime from "../functions/getTime";
@@ -103,7 +103,7 @@ const Post = ({
   }, [currentUserName, like, showLikeModal]);
 
   return (
-    <div key={uniqid()} className="post">
+    <div key={v4()} className="post">
       <div className="postHeader">
         <img
           className="profilePic"
