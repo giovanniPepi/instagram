@@ -125,13 +125,11 @@ input:focus {
     width: 100%;
   }
   .postHeaderContainer {
-    padding: 14px 4px 14px 16px;
+    padding: 14px 4px 4px 16px;
   }
   .postHeader {
     display: flex;
     align-items: center;
-    margin: var(--post-margin);
-    gap: 0.4rem;
   }
   .profilePicMini {
     width: 28px;
@@ -140,11 +138,14 @@ input:focus {
   }
   .comment {
     display: flex;
-    gap: 0.5rem;
     font-weight: normal;
     padding: var(--post-padding);
   }
-  .postMetrics {
+  .comment,
+  .postHeader {
+    gap: 0.7rem;
+  }
+  . .postMetrics {
     display: flex;
     flex-direction: column;
     font-weight: bold;
@@ -292,6 +293,7 @@ input:focus {
     display: flex;
     flex-direction: column;
     flex: 1;
+    margin: 0 0 8px 0;
   }
   .commentSection {
     flex: 1;

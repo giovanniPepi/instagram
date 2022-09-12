@@ -13,7 +13,7 @@ import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { v4 } from "uuid";
 
-const Comments = ({ commentArray, id }) => {
+const Comments = ({ commentArray, id, showComplete }) => {
   const { userImg, currentUserName } = UserAuth();
   const [commentText, setCommentText] = useState(null);
   const [btnStyle, setbtnStyle] = useState({

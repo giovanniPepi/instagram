@@ -57,6 +57,7 @@ const PostCompletePage = ({
               authorUserImg={authorUserImg}
               id={id}
               domNode={domNode}
+              showComplete={true}
             />
           </div>
         </div>
