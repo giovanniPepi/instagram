@@ -267,7 +267,6 @@ input:focus {
     display: flex;
     border: 1px solid black;
     background-color: var(--white0);
-    border-radius: var(--modalRadius);
     max-width: 90vw;
     max-height: 85vh;
     background-color: rgba(1, 1, 1);
