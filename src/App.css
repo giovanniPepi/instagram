@@ -43,7 +43,6 @@ input:focus {
 .primary {
   color: var(--font-primary);
   font-weight: bold;
-  flex: 1;
 }
 .secondary {
   color: var(--font-secondary);
@@ -124,6 +123,9 @@ input:focus {
     object-fit: cover;
     height: 100%;
     width: 100%;
+  }
+  .postHeaderContainer {
+    padding: 14px 4px 14px 16px;
   }
   .postHeader {
     display: flex;
@@ -283,7 +285,8 @@ input:focus {
     display: flex;
     flex-direction: column;
     align-content: space-between;
-    min-width: 35vw;
+    min-width: 50vw;
+    gap: 0.5rem;
   }
   .rightCompletePostLower {
     display: flex;
@@ -297,14 +300,16 @@ input:focus {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+  }
+  .rightCompletePostLower,
+  .commentSectionHigher {
+    gap: 0.8rem;
   }
   .answeringSection {
     flex: 0;
   }
 
   .commentText {
-    word-wrap: break-word;
-    flex: 0;
+    flex: 1;
   }
 }

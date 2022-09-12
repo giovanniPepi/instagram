@@ -66,7 +66,7 @@ const Comments = ({ commentArray, id }) => {
                   className="profilePicMini"
                 />
                 <p className="primary">{commentArray[0].userName}</p>
-                <p>{commentArray[0].commentText}</p>
+                <span>{commentArray[0].commentText}</span>
               </>
             ) : null}
           </div>
@@ -86,7 +86,9 @@ const Comments = ({ commentArray, id }) => {
                   className="profilePicMini"
                 />
                 <p className="primary">{commentArray[1].userName}</p>
-                <p className="commentText">{commentArray[1].commentText}</p>
+                <span className="commentText">
+                  {commentArray[1].commentText}
+                </span>
               </>
             ) : null}
           </div>

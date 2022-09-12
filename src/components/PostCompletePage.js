@@ -37,11 +37,11 @@ const PostCompletePage = ({
               />
               <p className="primary">{authorUserName}</p>
             </div>
-            <div className="postSeparator"></div>
           </div>
+          <div className="postSeparator"></div>
 
           <div className="rightCompletePostLower">
-            <div className="postHeader">
+            <div className="comment">
               <img
                 className="profilePicMini"
                 src={authorUserImg}
