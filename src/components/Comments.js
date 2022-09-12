@@ -67,8 +67,10 @@ const Comments = ({ commentArray, id, showComplete }) => {
                     alt="avatar"
                     className="profilePicMini"
                   />
-                  <p className="primary">{comment.userName}</p>
-                  <span>{comment.commentText}</span>
+                  <div className="commentContainer">
+                    <p className="primary">{comment.userName}</p>
+                    <span>{comment.commentText}</span>
+                  </div>
                 </>
               ) : null}
             </div>
@@ -89,10 +91,12 @@ const Comments = ({ commentArray, id, showComplete }) => {
                     alt="avatar"
                     className="profilePicMini"
                   />
-                  <p className="primary">{commentArray[0].userName}</p>
-                  <span className="commentText">
-                    {commentArray[0].commentText}
-                  </span>
+                  <div className="commentContainer">
+                    <p className="primary">{commentArray[0].userName}</p>
+                    <span className="commentText">
+                      {commentArray[0].commentText}
+                    </span>
+                  </div>
                 </>
               ) : null}
             </div>
@@ -111,10 +115,12 @@ const Comments = ({ commentArray, id, showComplete }) => {
                     alt="avatar"
                     className="profilePicMini"
                   />
-                  <p className="primary">{commentArray[1].userName}</p>
-                  <span className="commentText">
-                    {commentArray[1].commentText}
-                  </span>
+                  <div className="commentContainer">
+                    <p className="primary">{commentArray[1].userName}</p>
+                    <span className="commentText">
+                      {commentArray[1].commentText}
+                    </span>
+                  </div>
                 </>
               ) : null}
             </div>
