@@ -294,8 +294,15 @@ input:focus {
   .rightCompletePostLower {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: repeat(auto-fit, minmax(30px, 1fr));
+    height: 100%;
     margin: 0 0 8px 0;
+  }
+  .rightCompletePostLower > .answeringSection {
+    align-self: flex-end;
+  }
+  .rightCompletePostLower > .postSeparator {
+    align-self: flex-end;
   }
   .commentSection {
     flex: 1;
@@ -308,9 +315,6 @@ input:focus {
   .rightCompletePostLower,
   .commentSectionHigher {
     gap: 0.8rem;
-  }
-  .answeringSection {
-    flex: 0;
   }
 
   .commentText {
