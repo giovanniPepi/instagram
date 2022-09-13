@@ -856,7 +856,7 @@ header {
     flex-direction: column;
     border: 1px solid black;
     background-color: var(--white0);
-    width: 100vw;
+    width: 95vw;
     background-color: rgba(1, 1, 1);
   }
   .postOverlay > * {
@@ -915,11 +915,13 @@ header {
   .mobile {
     gap: 0.5rem;
   }
-
   .commentText {
     align-self: center;
   }
   .mobilePic {
     display: none;
+  }
+  .titleDesc {
+    text-align: center;
   }
 }

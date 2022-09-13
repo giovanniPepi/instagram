@@ -63,16 +63,10 @@ const PostCompletePage = ({
                 src={authorUserImg}
                 alt={`${authorUserName}'s profile`}
               />
-              <p className="primary">{authorUserName}</p>
-              <p className="postDescription">{description}</p>
+              <p className="primary titleDesc">{authorUserName}</p>
+              <p className="postDescription ">{description}</p>
             </div>
-            {/*             <Comments
-              commentArray={comment}
-              authorUserImg={authorUserImg}
-              id={id}
-              showComplete={true}
-              domNode={domNode}
- */}
+
             {comment.map((item) => {
               return (
                 <div className="comment" key={v4()}>
@@ -85,8 +79,9 @@ const PostCompletePage = ({
                       <img
                         src={item.userImg}
                         alt="avatar"
-                        className="profilePicMini"
+                        className="profilePicMini mobilePic"
                       />
+
                       <div className="commentContainer">
                         <p className="primary">{item.userName}</p>
                         <span className="commentText">{item.commentText}</span>
