@@ -55,7 +55,7 @@ const PostCompletePage = ({
           <div className="postSeparator gridSeparate"></div>
 
           <div className="rightCompletePostLower">
-            <div className="comment">
+            <div className="comment mobile">
               <img
                 className="profilePicMini"
                 src={authorUserImg}
@@ -87,7 +87,7 @@ const PostCompletePage = ({
                       />
                       <div className="commentContainer">
                         <p className="primary">{item.userName}</p>
-                        <span>{item.commentText}</span>
+                        <span className="commentText">{item.commentText}</span>
                       </div>
                     </>
                   ) : null}
