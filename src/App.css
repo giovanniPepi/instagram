@@ -134,6 +134,7 @@ input:focus {
   }
   .postHeaderContainer {
     padding: 14px 4px 4px 16px;
+    grid-row: 1/2;
   }
   .postHeader {
     display: flex;
@@ -188,10 +189,12 @@ input:focus {
     object-fit: cover;
     border-top: 1px solid var(--post-separator);
   }
+  .postSeparator.gridSeparate {
+    grid-row: 2/3;
+  }
   .answeringSection {
     display: flex;
     padding: var(--post-padding);
-    margin-bottom: 12px;
     flex: 1;
   }
   .commentAnswerInput {
@@ -284,15 +287,13 @@ input:focus {
     min-width: 30vw;
     max-width: 35vw;
   }
-
   .timelineImg.complete {
     object-fit: cover;
   }
-
   .rightCompletePost {
-    display: flex;
-    flex-direction: column;
-    align-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 10px 1fr;
     min-width: 50vw;
     gap: 0.5rem;
   }
@@ -304,9 +305,6 @@ input:focus {
   }
   .rightCompletePostLower > .answeringSection {
     align-self: flex-end;
-  }
-  .rightCompletePostLower > .postSeparator {
-    /* align-self: flex-end; */
   }
   .commentSection {
     flex: 1;
@@ -320,12 +318,17 @@ input:focus {
   .commentSectionHigher {
     gap: 0.8rem;
   }
-
   .commentText {
     flex: 1;
   }
   .postTimeline {
     margin: 8px 4px 8px 12px;
+  }
+  .answeringContainer {
+    min-height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
   }
 }
 @media screen and (min-width: 550px) and (max-width: 999px) {
@@ -543,7 +546,6 @@ input:focus {
   .rightCompletePost {
     display: flex;
     flex-direction: column;
-    align-content: space-between;
     min-width: 50vw;
     gap: 0.5rem;
   }
@@ -555,9 +557,6 @@ input:focus {
   }
   .rightCompletePostLower > .answeringSection {
     align-self: flex-end;
-  }
-  .rightCompletePostLower > .postSeparator {
-    /* align-self: flex-end; */
   }
   .commentSection {
     flex: 1;

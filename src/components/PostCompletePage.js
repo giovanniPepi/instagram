@@ -1,5 +1,8 @@
+import { useEffect, useState } from "react";
+import { v4 } from "uuid";
+import { UserAuth } from "../context/AuthContext";
+import postCommentToFirestore from "../functions/postCommentToFirestore";
 import useClickOutside from "../functions/useClickOutside";
-import Comments from "./Comments";
 
 const PostCompletePage = ({
   id,
@@ -15,6 +18,18 @@ const PostCompletePage = ({
   const domNode = useClickOutside(() => {
     setShowComments(false);
   });
+
+  const [commentText, setCommentText] = useState(null);
+  const { userImg, currentUserName } = UserAuth();
+  const [btnStyle, setbtnStyle] = useState({
+    opacity: 0.3,
+  });
+
+  useEffect(() => {
+    if (commentText === "" || commentText === null)
+      setbtnStyle({ opacity: 0.3 });
+    else setbtnStyle({ opacity: 1 });
+  }, [commentText]);
 
   return (
     <div className="postOverlayParent">
@@ -49,13 +64,63 @@ const PostCompletePage = ({
               <p className="primary">{authorUserName}</p>
               <p className="postDescription">{description}</p>
             </div>
-            <Comments
+            {/*             <Comments
               commentArray={comment}
               authorUserImg={authorUserImg}
               id={id}
               showComplete={true}
               domNode={domNode}
-            />
+ */}
+            {comment.map((item) => {
+              return (
+                <div className="comment" key={v4()}>
+                  {/* Checks if all info are valid before rendering */}
+                  {item.userImg &&
+                  item.userName &&
+                  item.commentText &&
+                  item.timestamp ? (
+                    <>
+                      <img
+                        src={item.userImg}
+                        alt="avatar"
+                        className="profilePicMini"
+                      />
+                      <div className="commentContainer">
+                        <p className="primary">{item.userName}</p>
+                        <span>{item.commentText}</span>
+                      </div>
+                    </>
+                  ) : null}
+                </div>
+              );
+            })}
+          </div>
+          <div className="answeringContainer">
+            <div className="postSeparator"></div>
+            <div className="answeringSection">
+              <input
+                type="text"
+                className="commentAnswerInput"
+                placeholder="Add a comment..."
+                onChange={(e) => {
+                  setCommentText(e.target.value);
+                }}
+              />
+              <button
+                onClick={() =>
+                  postCommentToFirestore(
+                    id,
+                    commentText,
+                    currentUserName,
+                    userImg
+                  )
+                }
+                className="postBtn"
+                style={btnStyle}
+              >
+                Post
+              </button>
+            </div>
           </div>
         </div>
       </div>
