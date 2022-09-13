@@ -31,6 +31,8 @@ const PostCompletePage = ({
     else setbtnStyle({ opacity: 1 });
   }, [commentText]);
 
+  console.log(comment, comment.length);
+
   return (
     <div className="postOverlayParent">
       <div className="postOverlay" ref={domNode}>
@@ -61,8 +63,19 @@ const PostCompletePage = ({
                 src={authorUserImg}
                 alt={`${authorUserName}'s profile`}
               />
-              <p className="primary">{authorUserName}</p>
-              <p className="postDescription">{description}</p>
+              {/*  AVOIDS LENGTHY TITLES  */}
+              {description.length < 20 ? (
+                <div className="commentContainer">
+                  <p className="primary">{authorUserName}</p>
+                </div>
+              ) : (
+                <>
+                  <div className="commentContainer column">
+                    <p className="primary">{authorUserName}</p>
+                    <p className="postDescription">{description}</p>
+                  </div>
+                </>
+              )}
             </div>
             {/*             <Comments
               commentArray={comment}
@@ -107,6 +120,8 @@ const PostCompletePage = ({
                 }}
               />
               <button
+                className="postBtn"
+                style={btnStyle}
                 onClick={() =>
                   postCommentToFirestore(
                     id,
@@ -115,8 +130,6 @@ const PostCompletePage = ({
                     userImg
                   )
                 }
-                className="postBtn"
-                style={btnStyle}
               >
                 Post
               </button>

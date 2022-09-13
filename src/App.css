@@ -69,6 +69,9 @@ input:focus {
   display: flex;
   gap: 0.3rem;
 }
+.commentContainer.column {
+  flex-direction: column;
+}
 
 @media screen and (min-width: 1000px) {
   /* App needs to be relative so likeModal can position itself*/
@@ -300,7 +303,7 @@ input:focus {
   .rightCompletePostLower {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+    grid-template-rows: repeat(auto-fill, 1fr);
     margin: 0 0 8px 0;
   }
   .rightCompletePostLower > .answeringSection {
@@ -579,9 +582,6 @@ input:focus {
   }
   .postTimeline {
     margin: 8px 4px 8px 12px;
-  }
-  .primary {
-    flex: 1;
   }
 }
 @media screen and (max-width: 549px) {
