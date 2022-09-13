@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
+import HomeIcon from "../icons/Home";
 import InstagramIcon from "../icons/Instagram";
+import PlusIcon from "../icons/Plus";
 
 const Header = () => {
   const { user, logOut, userImg } = UserAuth();
@@ -24,14 +26,17 @@ const Header = () => {
                 <InstagramIcon />
               </div>
               <div className="fakeSearchHolder">
-                <input className="fakeSearch" placeholder=""></input>
+                <input
+                  className="fakeSearch"
+                  placeholder="Not a search..."
+                ></input>
               </div>
               <div className="profile">
                 <Link to="/">
-                  <button>Home</button>
+                  <HomeIcon />
                 </Link>
                 <Link to="/upload">
-                  <button>Upload post</button>
+                  <PlusIcon />
                 </Link>
                 <p className="primary">{user?.displayName}</p>
                 <img src={userImg} alt="profile" className="profilePic" />
