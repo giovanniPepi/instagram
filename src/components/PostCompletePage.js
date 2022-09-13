@@ -58,23 +58,13 @@ const PostCompletePage = ({
 
           <div className="rightCompletePostLower">
             <div className="comment mobile">
-              {/*  AVOIDS LENGTHY TITLES  */}
-              {description.length < 20 ? (
-                <>
-                  <img
-                    className="profilePicMini"
-                    src={authorUserImg}
-                    alt={`${authorUserName}'s profile`}
-                  />
-                  <p className="primary">{authorUserName}</p>
-                  <p className="postDescription">{description}</p>
-                </>
-              ) : (
-                <>
-                  <p className="primary">{authorUserName}</p>
-                  <p className="postDescription">{description}</p>
-                </>
-              )}
+              <img
+                className="profilePicMini mobilePic"
+                src={authorUserImg}
+                alt={`${authorUserName}'s profile`}
+              />
+              <p className="primary">{authorUserName}</p>
+              <p className="postDescription">{description}</p>
             </div>
             {/*             <Comments
               commentArray={comment}

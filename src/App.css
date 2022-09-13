@@ -173,6 +173,7 @@ header {
   .comment {
     display: flex;
     font-weight: normal;
+    align-items: center;
     padding: var(--post-padding);
   }
   .comment,
@@ -231,6 +232,7 @@ header {
 
   .postDescription {
     font-size: var(--font-size-description);
+    max-width: 25vw;
   }
   .postDescriptionDiv {
     display: flex;
@@ -266,7 +268,7 @@ header {
     border: 1px solid black;
     background-color: var(--white0);
     border-radius: var(--modalRadius);
-    width: 40vw;
+    width: 50vw;
   }
   .likeLine {
     display: flex;
@@ -530,7 +532,7 @@ header {
     border: 1px solid black;
     background-color: var(--white0);
     border-radius: var(--modalRadius);
-    width: 40vw;
+    width: 50vw;
   }
   .likeLine {
     display: flex;
@@ -817,7 +819,7 @@ header {
     border: 1px solid black;
     background-color: var(--white0);
     border-radius: var(--modalRadius);
-    width: 40vw;
+    width: 80vw;
   }
   .likeLine {
     display: flex;
@@ -854,7 +856,7 @@ header {
     flex-direction: column;
     border: 1px solid black;
     background-color: var(--white0);
-    max-width: 80vw;
+    width: 100vw;
     background-color: rgba(1, 1, 1);
   }
   .postOverlay > * {
@@ -870,7 +872,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    max-height: 25vh;
+    max-height: 35vh;
   }
   .postSeparator.gridSeparate {
     grid-row: 2/3;
@@ -880,7 +882,6 @@ header {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
     margin: 0 0 8px 0;
-    max-height: 50vh;
     overflow: scroll;
   }
   /*Scrollbars */
@@ -917,5 +918,8 @@ header {
 
   .commentText {
     align-self: center;
+  }
+  .mobilePic {
+    display: none;
   }
 }
