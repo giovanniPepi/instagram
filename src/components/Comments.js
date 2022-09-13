@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { v4 } from "uuid";
+import postCommentToFirestore from "../functions/postCommentToFirestore";
 
 const Comments = ({ commentArray, id, showComplete }) => {
   const { userImg, currentUserName } = UserAuth();
@@ -19,30 +20,6 @@ const Comments = ({ commentArray, id, showComplete }) => {
   const [btnStyle, setbtnStyle] = useState({
     opacity: 0.3,
   });
-
-  const postCommentToFirestore = async () => {
-    const postRef = collection(db, "postDB");
-    const q = query(postRef, where("id", "==", `${id}`), limit(1));
-
-    let subscribeComment = onSnapshot(q, (snapshot) => {
-      snapshot.forEach(async (doc) => {
-        //reference to the received data
-        const docRef = doc.ref;
-
-        if (!commentText || !currentUserName || !userImg) return;
-        await updateDoc(docRef, {
-          comment: arrayUnion({
-            commentText,
-            userName: currentUserName,
-            userImg,
-            timestamp: Timestamp.now(),
-          }),
-        });
-      });
-      // stop realtime updates
-      subscribeComment();
-    });
-  };
 
   useEffect(() => {
     if (commentText === "" || commentText === null)
@@ -140,7 +117,9 @@ const Comments = ({ commentArray, id, showComplete }) => {
           }}
         />
         <button
-          onClick={postCommentToFirestore}
+          onClick={() =>
+            postCommentToFirestore(id, commentText, currentUserName, userImg)
+          }
           className="postBtn"
           style={btnStyle}
         >
