@@ -196,9 +196,11 @@ input:focus {
     grid-row: 2/3;
   }
   .answeringSection {
-    display: flex;
+    height: 5vh;
     padding: var(--post-padding);
     flex: 1;
+    display: flex;
+    align-items: center;
   }
   .commentAnswerInput {
     flex: 1;
@@ -299,12 +301,21 @@ input:focus {
     grid-template-rows: 50px 10px 1fr;
     min-width: 50vw;
     gap: 0.5rem;
+    max-height: 90vh;
   }
   .rightCompletePostLower {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
     margin: 0 0 8px 0;
+    max-height: 70vh;
+    overflow: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  /*Scrollbars */
+  .rightCompletePostLower::-webkit-scrollbar {
+    display: none;
   }
   .rightCompletePostLower > .answeringSection {
     align-self: flex-end;
@@ -446,10 +457,11 @@ input:focus {
     border-top: 1px solid var(--post-separator);
   }
   .answeringSection {
-    display: flex;
+    height: 5vh;
     padding: var(--post-padding);
-    margin-bottom: 12px;
     flex: 1;
+    display: flex;
+    align-items: center;
   }
   .commentAnswerInput {
     flex: 1;
@@ -551,6 +563,7 @@ input:focus {
     grid-template-rows: 50px 10px 1fr;
     min-width: 50vw;
     gap: 0.5rem;
+    max-height: 90vh;
   }
   .postSeparator.gridSeparate {
     grid-row: 2/3;
@@ -560,6 +573,14 @@ input:focus {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
     margin: 0 0 8px 0;
+    max-height: 70vh;
+    overflow: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  /*Scrollbars */
+  .rightCompletePostLower::-webkit-scrollbar {
+    display: none;
   }
   .rightCompletePostLower > .answeringSection {
     align-self: flex-end;
@@ -697,10 +718,11 @@ input:focus {
     border-top: 1px solid var(--post-separator);
   }
   .answeringSection {
-    display: flex;
+    height: 5vh;
     padding: var(--post-padding);
-    margin-bottom: 12px;
     flex: 1;
+    display: flex;
+    align-items: center;
   }
   .commentAnswerInput {
     flex: 1;
@@ -800,6 +822,7 @@ input:focus {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    max-height: 70vh;
   }
   .postSeparator.gridSeparate {
     grid-row: 2/3;
@@ -809,6 +832,12 @@ input:focus {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
     margin: 0 0 8px 0;
+    max-height: 50vh;
+    overflow: scroll;
+  }
+  /*Scrollbars */
+  .rightCompletePostLower::-webkit-scrollbar {
+    display: none;
   }
   .rightCompletePostLower > .answeringSection {
     align-self: flex-end;
