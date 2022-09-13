@@ -96,6 +96,13 @@ header {
 .answeringSection {
   margin-bottom: 12px;
 }
+.comment {
+  align-items: center;
+}
+.postDescription,
+.commentText {
+  word-break: break-all;
+}
 
 @media screen and (min-width: 1000px) {
   /* App needs to be relative so likeModal can position itself*/
@@ -859,14 +866,15 @@ header {
     flex-direction: column;
     border: 1px solid black;
     background-color: var(--white0);
-    width: 95vw;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(1, 1, 1);
   }
   .postOverlay > * {
     background-color: rgb(255, 255, 255);
   }
   .leftCompletePost {
-    max-height: 35vh;
+    display: none;
   }
   .timelineImg.complete {
     object-fit: fill;
@@ -875,7 +883,6 @@ header {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    max-height: 35vh;
   }
   .postSeparator.gridSeparate {
     grid-row: 2/3;
@@ -883,9 +890,13 @@ header {
   .rightCompletePostLower {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
     margin: 0 0 8px 0;
     overflow: scroll;
+    height: 100vh;
+  }
+  .rightCompletePostLower > * {
+    font-size: 12px;
   }
   /*Scrollbars */
   .rightCompletePostLower::-webkit-scrollbar {
@@ -910,19 +921,20 @@ header {
     margin: 8px 4px 8px 12px;
   }
   .primary {
-    flex: 1;
+    word-break: keep-all;
+    flex: 10;
   }
   .commentContainer {
     gap: 0.5rem;
+  }
+  .comment.mobile {
+    display: none;
   }
   .mobile {
     gap: 0.5rem;
   }
   .commentText {
     align-self: center;
-  }
-  .mobilePic {
-    display: none;
   }
   .titleDesc {
     text-align: center;

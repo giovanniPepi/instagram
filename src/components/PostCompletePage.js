@@ -79,7 +79,7 @@ const PostCompletePage = ({
                       <img
                         src={item.userImg}
                         alt="avatar"
-                        className="profilePicMini mobilePic"
+                        className="profilePicMini mobile"
                       />
 
                       <div className="commentContainer">
