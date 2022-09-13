@@ -103,6 +103,9 @@ header {
 .commentText {
   word-break: break-all;
 }
+.backMobile {
+  display: none;
+}
 
 @media screen and (min-width: 1000px) {
   /* App needs to be relative so likeModal can position itself*/
@@ -880,8 +883,8 @@ header {
     object-fit: fill;
   }
   .rightCompletePost {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 0.5rem;
   }
   .postSeparator.gridSeparate {
@@ -938,5 +941,15 @@ header {
   }
   .titleDesc {
     text-align: center;
+  }
+  .answeringContainer {
+    grid-row: 1/2;
+  }
+  .answeringSection {
+    margin-bottom: 0;
+  }
+  .backMobile {
+    display: flex;
+    margin-right: 12px;
   }
 }

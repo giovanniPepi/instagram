@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { v4 } from "uuid";
 import { UserAuth } from "../context/AuthContext";
 import postCommentToFirestore from "../functions/postCommentToFirestore";
 import useClickOutside from "../functions/useClickOutside";
+import BackIcon from "../icons/Back";
 
 const PostCompletePage = ({
   id,
@@ -30,8 +32,6 @@ const PostCompletePage = ({
       setbtnStyle({ opacity: 0.3 });
     else setbtnStyle({ opacity: 1 });
   }, [commentText]);
-
-  console.log(comment, comment.length);
 
   return (
     <div className="postOverlayParent">
@@ -95,6 +95,11 @@ const PostCompletePage = ({
           <div className="answeringContainer">
             <div className="postSeparator"></div>
             <div className="answeringSection">
+              <Link to="/">
+                <button className="backMobile">
+                  <BackIcon />
+                </button>
+              </Link>
               <input
                 type="text"
                 className="commentAnswerInput"
