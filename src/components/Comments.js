@@ -34,8 +34,8 @@ const Comments = ({ commentArray, id, showComplete }) => {
                   className="profilePicMini"
                 />
                 <div className="commentContainer">
-                  <p className="primary">{commentArray[0].userName}</p>
                   <span className="commentText">
+                    <strong>{commentArray[0].userName} </strong>
                     {commentArray[0].commentText}
                   </span>
                 </div>
@@ -58,9 +58,9 @@ const Comments = ({ commentArray, id, showComplete }) => {
                   className="profilePicMini"
                 />
                 <div className="commentContainer">
-                  <p className="primary">{commentArray[1].userName}</p>
                   <span className="commentText">
-                    {commentArray[1].commentText}
+                    <strong>{commentArray[0].userName} </strong>
+                    {commentArray[0].commentText}
                   </span>
                 </div>
               </>

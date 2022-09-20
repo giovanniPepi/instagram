@@ -895,7 +895,7 @@ header {
     height: 100vh;
   }
   .rightCompletePostLower > * {
-    font-size: 12px;
+    font-size: var(--font-size-description);
   }
   /*Scrollbars */
   .rightCompletePostLower::-webkit-scrollbar {
