@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import HomeIcon from "../icons/Home";
@@ -6,6 +7,7 @@ import PlusIcon from "../icons/Plus";
 
 const Header = () => {
   const { user, logOut, userImg } = UserAuth();
+  const [screenWidth, setScreenWIdth] = useState();
 
   const handleSignOut = async () => {
     try {
@@ -15,30 +17,47 @@ const Header = () => {
     }
   };
 
+  useEffect(() => {
+    const size = window.screen.availWidth;
+    setScreenWIdth(size);
+    console.log(screenWidth);
+  }, [screenWidth]);
+
   return (
     <>
       <header>
         <div className="headerContainer">
           {user?.displayName ? (
             <>
-              <div className="logo">
+              <div
+                className="logo"
+                onClick={() => window.location.reload(false)}
+              >
                 Not
                 <InstagramIcon />
               </div>
               <div className="fakeSearchHolder">
-                <input
-                  className="fakeSearch"
-                  placeholder="Not a search..."
-                ></input>
+                {screenWidth < 600 ? (
+                  <input
+                    className="fakeSearch"
+                    placeholder="Not a search"
+                  ></input>
+                ) : (
+                  <input
+                    className="fakeSearch"
+                    placeholder="Not a search..."
+                  ></input>
+                )}
               </div>
               <div className="profile">
                 <Link to="/">
                   <HomeIcon />
                 </Link>
                 <Link to="/upload">
-                  <PlusIcon />
+                  <div className="uploadBtnDiv">
+                    <PlusIcon />
+                  </div>
                 </Link>
-                <p className="primary">{user?.displayName}</p>
                 <img src={userImg} alt="profile" className="profilePic" />
                 <button onClick={handleSignOut}>Sign Out</button>
               </div>
