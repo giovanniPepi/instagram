@@ -153,8 +153,10 @@ const Post = ({
           </div>
         )}
         <div className="postDescriptionDiv">
-          <p className="primary">{authorUserName}</p>
-          <p className="postDescription">{description}</p>
+          <p className="postDescription">
+            <strong>{authorUserName} </strong>
+            {description}
+          </p>
         </div>
       </div>
       <div className="postMetrics">

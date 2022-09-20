@@ -248,7 +248,6 @@ header {
 
   .postDescription {
     font-size: var(--font-size-description);
-    max-width: 25vw;
   }
   .postDescriptionDiv {
     display: flex;
