@@ -343,9 +343,9 @@ header {
     max-height: 90vh;
   }
   .rightCompletePostLower {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     margin: 0 0 8px 0;
     max-height: 70vh;
     overflow: scroll;
@@ -611,9 +611,9 @@ header {
     grid-row: 2/3;
   }
   .rightCompletePostLower {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     margin: 0 0 8px 0;
     max-height: 70vh;
     overflow: scroll;
@@ -888,9 +888,9 @@ header {
     grid-row: 2/3;
   }
   .rightCompletePostLower {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     margin: 0 0 8px 0;
     height: 100vh;
   }
