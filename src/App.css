@@ -931,7 +931,6 @@ header {
     gap: 0.5rem;
   }
   .comment.mobile {
-    display: none;
   }
   .mobile {
     gap: 0.5rem;

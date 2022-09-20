@@ -10,9 +10,7 @@ const PostCompletePage = ({
   id,
   img,
   description,
-  like,
   comment,
-  timestamp,
   authorUserName,
   authorUserImg,
   setShowComments,
@@ -95,11 +93,12 @@ const PostCompletePage = ({
           <div className="answeringContainer">
             <div className="postSeparator"></div>
             <div className="answeringSection">
-              <Link to="/">
-                <button className="backMobile">
-                  <BackIcon />
-                </button>
-              </Link>
+              <button
+                className="backMobile"
+                onClick={() => setShowComments(false)}
+              >
+                <BackIcon />
+              </button>
               <input
                 type="text"
                 className="commentAnswerInput"
