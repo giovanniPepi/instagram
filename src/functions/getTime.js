@@ -30,12 +30,12 @@ const getTime = (unix) => {
   else if (difference > 0.0833 && difference <= 1)
     return `${difference * 24} HOURS`;
   else if (difference > 1 && difference <= 1.5)
-    return `${difference.toFixed(0)} DAY`;
+    return `${difference.toFixed(0)} DAYS`;
   else if (difference > 1.5 && difference <= 7)
     return `${difference.toFixed(0)} DAYS`;
-  else if (difference > 7 && difference <= 14)
+  else if (difference > 7 && difference <= 10)
     return `${(difference / 7).toFixed(0)} WEEK`;
-  else if (difference > 7) return `${(difference / 7).toFixed(0)} WEEKS`;
+  else if (difference > 10) return `${(difference / 7).toFixed(0)} WEEKS`;
 };
 
 export default getTime;
