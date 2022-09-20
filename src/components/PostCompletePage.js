@@ -19,6 +19,8 @@ const PostCompletePage = ({
     setShowComments(false);
   });
 
+  const [screenWidth, setScreenWidth] = useState();
+
   const [commentText, setCommentText] = useState(null);
   const { userImg, currentUserName } = UserAuth();
   const [btnStyle, setbtnStyle] = useState({
@@ -29,7 +31,11 @@ const PostCompletePage = ({
     if (commentText === "" || commentText === null)
       setbtnStyle({ opacity: 0.3 });
     else setbtnStyle({ opacity: 1 });
-  }, [commentText]);
+
+    const width = window.screen.availWidth;
+    setScreenWidth(width);
+    console.log(screenWidth);
+  }, [commentText, screenWidth]);
 
   return (
     <div className="postOverlayParent">
@@ -55,15 +61,32 @@ const PostCompletePage = ({
           <div className="postSeparator gridSeparate"></div>
 
           <div className="rightCompletePostLower">
-            <div className="comment mobile">
-              <img
-                className="profilePicMini mobilePic"
-                src={authorUserImg}
-                alt={`${authorUserName}'s profile`}
-              />
-              <p className="primary titleDesc">{authorUserName}</p>
-              <p className="postDescription ">{description}</p>
-            </div>
+            {screenWidth < 550 ? (
+              <>
+                <div className="comment mobile smallscreen">
+                  <img
+                    className="profilePicMini mobilePic"
+                    src={authorUserImg}
+                    alt={`${authorUserName}'s profile`}
+                  />
+
+                  <p className="postDescription ">
+                    <strong>{authorUserName} </strong>
+                    {description}
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div className="comment mobile">
+                <img
+                  className="profilePicMini mobilePic"
+                  src={authorUserImg}
+                  alt={`${authorUserName}'s profile`}
+                />
+                <p className="primary titleDesc">{authorUserName}</p>
+                <p className="postDescription ">{description}</p>
+              </div>
+            )}
 
             {comment.map((item) => {
               return (
@@ -79,11 +102,20 @@ const PostCompletePage = ({
                         alt="avatar"
                         className="profilePicMini mobile"
                       />
-
-                      <div className="commentContainer">
-                        <p className="primary">{item.userName}</p>
-                        <span className="commentText">{item.commentText}</span>
-                      </div>
+                      {screenWidth < 550 ? (
+                        <div className="commentContainer">
+                          <p className="commentText">
+                            <strong>{item.userName}</strong> {item.commentText}
+                          </p>
+                        </div>
+                      ) : (
+                        <div className="commentContainer">
+                          <p className="primary">{item.userName}</p>
+                          <span className="commentText">
+                            {item.commentText}
+                          </span>
+                        </div>
+                      )}
                     </>
                   ) : null}
                 </div>

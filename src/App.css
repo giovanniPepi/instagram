@@ -793,11 +793,6 @@ header {
     flex: 1;
     border: none;
   }
-  .postDescription {
-    font-size: var(--font-size-description);
-    flex: 1;
-    text-align: center;
-  }
   .postDescriptionDiv {
     display: flex;
     align-items: center;
@@ -895,7 +890,6 @@ header {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
     margin: 0 0 8px 0;
-    overflow: scroll;
     height: 100vh;
   }
   .rightCompletePostLower > * {
@@ -931,15 +925,23 @@ header {
     gap: 0.5rem;
   }
   .comment.mobile {
+    display: flex;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .postDescription {
+    font-size: var(--font-size-description);
+  }
+  .titleDesc {
+    text-align: left;
+    flex: inherit;
+    white-space: nowrap;
   }
   .mobile {
     gap: 0.5rem;
   }
   .commentText {
     align-self: center;
-  }
-  .titleDesc {
-    text-align: center;
   }
   .answeringContainer {
     grid-row: 1/2;
@@ -950,5 +952,9 @@ header {
   .backMobile {
     display: flex;
     margin-right: 12px;
+  }
+  .smallscreen {
+    display: flex;
+    margin: 8px 4px 0 0;
   }
 }
