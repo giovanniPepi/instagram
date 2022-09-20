@@ -343,7 +343,7 @@ header {
   .rightCompletePostLower {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, 1fr);
+    grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
     margin: 0 0 8px 0;
     max-height: 70vh;
     overflow: scroll;
@@ -611,7 +611,7 @@ header {
   .rightCompletePostLower {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(auto-fill, 1fr);
+    grid-template-rows: repeat(auto-fill, minmax(40px, 1fr));
     margin: 0 0 8px 0;
     max-height: 70vh;
     overflow: scroll;
