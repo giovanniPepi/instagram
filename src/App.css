@@ -96,7 +96,6 @@ header {
   background-color: var(--post-separator);
 }
 .answeringSection {
-  align-self: center;
   margin-bottom: 12px;
 }
 .comment {
@@ -421,7 +420,6 @@ header {
     min-height: 40px;
     display: flex;
     flex-direction: column;
-    justify-items: center;
   }
   /*Gets out of the rule that is applied elsewhere*/
   .postMetrics > .commentSection > .answeringSection {
@@ -833,7 +831,6 @@ header {
   .answeringSection {
     height: 5vh;
     padding: var(--post-padding-mobile);
-    flex: 1;
     display: flex;
     align-items: center;
   }
@@ -995,12 +992,14 @@ header {
     display: flex;
     flex-direction: column;
     grid-row: 1/2;
+    justify-content: center;
   }
   .answeringSection {
-    margin: 0 12px 12px 12px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
+    align-self: center;
+    margin-bottom: 0;
   }
   .backMobile {
     display: flex;

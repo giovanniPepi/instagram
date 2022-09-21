@@ -22,23 +22,6 @@ const App = () => {
           }
         />
         <Route path="/signin" element={<SigninPage />} />
-        <Route
-          path="/account"
-          element={
-            <Protected>
-              <AccountPage />
-            </Protected>
-          }
-        />
-        <Route
-          path="/upload"
-          element={
-            <Protected>
-              <Header />
-              <UploadPage />
-            </Protected>
-          }
-        />
       </Routes>
     </AuthContextProvider>
   );
