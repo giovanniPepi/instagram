@@ -9,7 +9,7 @@ const UploadModal = ({ setShowUploadModal }) => {
   return (
     <div className="postOverlayParent">
       <div className="uploadModalOverlay" ref={domNode}>
-        <UploadPage />
+        <UploadPage setShowUploadModal={setShowUploadModal} />
       </div>
     </div>
   );

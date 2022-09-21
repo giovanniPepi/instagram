@@ -6,7 +6,7 @@ import { UserAuth } from "../context/AuthContext";
 import { storage } from "../firebase";
 import postToFirestore from "../functions/postToFirestore";
 
-const UploadPage = () => {
+const UploadPage = ({ setShowUploadModal }) => {
   //display uploaded IMG
   const [imgFile, setimgFile] = useState(null);
   const [description, setDescription] = useState(null);
@@ -43,6 +43,7 @@ const UploadPage = () => {
       return;
     }
     postToFirestore(imgFile, description, userName, userImg);
+    setShowUploadModal(false);
   };
 
   return (
