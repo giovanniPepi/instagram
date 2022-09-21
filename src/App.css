@@ -171,7 +171,27 @@ header {
   .postPreview {
     display: flex;
     flex-direction: column;
-    width: 50vw;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .uploadContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .uploadBtn {
+    background-color: var(--primary-button);
+    color: white;
+  }
+  .imagePreview {
+    max-width: 40vw;
+  }
+  .uploadImgBorderDiv {
+    border: 2px solid black;
+  }
+  #postDescription {
+    max-width: 50vw;
   }
   .timelineImg {
     object-fit: cover;

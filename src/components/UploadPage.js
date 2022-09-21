@@ -49,33 +49,43 @@ const UploadPage = () => {
   return (
     <>
       <div className="postPreview">
-        <label htmlFor="postDescription">Description</label>
-        <input
-          id="postDescription"
-          type="text"
-          onChange={(event) => {
-            setDescription(event.target.value);
-          }}
-        />
-        <input
-          type="file"
-          /*Changes the state when a file is uploaded*/
-          onChange={(event) => {
-            uploadImage(event.target.files[0]);
-          }}
-        />
-        {imgFile !== null ? (
-          <>
-            <img
-              src={imgFile}
-              alt="postimg"
-              className="timelineImg"
-              key={v4()}
-            />
-          </>
-        ) : null}
+        <h1>Upload photo</h1>
+
+        <div className="uploadContainer">
+          <input
+            className="inptFile"
+            type="file"
+            /*Changes the state when a file is uploaded*/
+            onChange={(event) => {
+              uploadImage(event.target.files[0]);
+            }}
+          />
+          <label htmlFor="postDescription" className="primary">
+            Description
+          </label>
+          <textarea
+            id="postDescription"
+            type="text"
+            onChange={(event) => {
+              setDescription(event.target.value);
+            }}
+          />
+
+          {imgFile !== null ? (
+            <div className="uploadImgBorderDiv">
+              <img
+                src={imgFile}
+                alt="postimg"
+                className="imagePreview"
+                key={v4()}
+              />
+            </div>
+          ) : null}
+        </div>
+        <button onClick={uploadPost} className="follow">
+          <div className="followInside">Upload</div>
+        </button>
       </div>
-      <button onClick={uploadPost}> Upload post</button>
     </>
   );
 };
