@@ -171,6 +171,9 @@ header {
   .uploadModalOverlay {
     background-color: white;
     border-radius: var(--modalRadius);
+    min-height: 40vh;
+    min-width: 40vw;
+    padding: 1rem;
   }
   .postPreview {
     display: flex;
@@ -189,7 +192,7 @@ header {
     color: white;
   }
   .imagePreview {
-    max-width: 40vw;
+    max-height: 40vh;
   }
   .uploadImgBorderDiv {
     border: 2px solid black;

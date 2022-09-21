@@ -22,7 +22,7 @@ const Timeline = () => {
           }))
         );
         // remove the function call to get realtime listeners
-        // snap();
+        snap();
       });
     } catch (error) {
       console.log(error);
@@ -33,6 +33,19 @@ const Timeline = () => {
     <section className="timeline">
       <div>
         {posts.map((post) => {
+          // avoids loading null posts
+          // avoids error right after uploading
+          if (
+            !post.timestamp ||
+            !post.description ||
+            !post.userName ||
+            !post.userImg ||
+            !post.comment ||
+            !post.like ||
+            !post.img ||
+            !post.id
+          )
+            return null;
           return (
             <Post
               key={v4()}

@@ -81,7 +81,12 @@ const UploadPage = () => {
             </div>
           ) : null}
         </div>
-        <button onClick={uploadPost} className="follow">
+        <button
+          onClick={() => {
+            uploadPost();
+          }}
+          className="follow"
+        >
           <div className="followInside">Upload</div>
         </button>
       </div>
