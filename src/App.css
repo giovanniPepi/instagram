@@ -16,7 +16,7 @@
   --post-padding-mobile: 0 20px;
   --post-separator: rgb(239, 239, 239);
   --elevated-separator: rgb(219, 219, 219);
-  --secondary-background: rgb(250, 250, 250);
+  --secondary-background: rgb(78, 69, 69);
   font-size: 14px;
   --inactive-opacity: 0.3;
   --primary-button: rgb(0, 149, 246);
@@ -144,10 +144,6 @@ header {
 .imagePreview {
   max-height: 30vh;
   max-width: 100%;
-}
-/*Gets out of the rule that is applied elsewhere*/
-.postMetrics > .commentSection > .answeringSection {
-  align-self: initial;
 }
 
 @media screen and (min-width: 1000px) {
@@ -426,6 +422,10 @@ header {
     display: flex;
     flex-direction: column;
     justify-items: center;
+  }
+  /*Gets out of the rule that is applied elsewhere*/
+  .postMetrics > .commentSection > .answeringSection {
+    align-self: initial;
   }
 }
 @media screen and (min-width: 550px) and (max-width: 999px) {
@@ -838,8 +838,8 @@ header {
     align-items: center;
   }
   .commentAnswerInput {
-    flex: 1;
     border: none;
+    margin-left: 8px;
   }
   .postDescriptionDiv {
     display: flex;
@@ -849,6 +849,7 @@ header {
   .postBtn {
     font-weight: bold;
     color: var(--primary-button);
+    margin-right: 8px;
     /*     opacity: var(--inactive-opacity); */
   }
 
@@ -996,8 +997,7 @@ header {
     grid-row: 1/2;
   }
   .answeringSection {
-    margin-top: 8px;
-    margin-bottom: 0;
+    margin: 0 12px 12px 12px;
     display: flex;
     justify-content: space-between;
     width: 100%;
