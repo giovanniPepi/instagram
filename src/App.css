@@ -8,6 +8,8 @@
   --font-secondary: rgb(142, 142, 142);
   --red-heart: #ed4956;
   --modalRadius: 12px;
+  --modalRadiusLeft: 12px 0px 0px 12px;
+  --modalRadiusRight: 0px 12px 12px 0px;
   --timeline-padding: 20px 0;
   --post-margin: 8px 4px 8px 8px;
   --profile-pic-dimensions: 32px;
@@ -148,6 +150,11 @@ header {
 /*Limits img height on timeline only*/
 .post > .timelineImg {
   max-height: 80vh;
+}
+
+.timelineImg.complete {
+  object-fit: cover;
+  border-radius: var(--modalRadiusLeft);
 }
 
 @media screen and (min-width: 1000px) {
@@ -374,9 +381,6 @@ header {
     min-width: 30vw;
     max-width: 35vw;
     border-radius: 12px 0px 0px 12px;
-  }
-  .timelineImg.complete {
-    object-fit: cover;
   }
   .rightCompletePost {
     display: grid;
