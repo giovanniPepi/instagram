@@ -27,7 +27,8 @@ body {
   padding: 0;
   color: var(--font-primary);
 }
-p {
+p,
+h1 {
   margin: 0;
   padding: 0;
 }
@@ -115,6 +116,40 @@ header {
   margin-top: 4px;
 }
 
+.uploadModalOverlay {
+  background-color: white;
+  border-radius: var(--modalRadius);
+  min-height: 30vh;
+  min-width: 30vw;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+.postPreview {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.uploadBtn {
+  background-color: var(--primary-button);
+  color: white;
+}
+.imagePreview {
+  max-height: 30vh;
+  max-width: 100%;
+}
+/*Gets out of the rule that is applied elsewhere*/
+.postMetrics > .commentSection > .answeringSection {
+  align-self: initial;
+}
+
 @media screen and (min-width: 1000px) {
   /* App needs to be relative so likeModal can position itself*/
   .app {
@@ -167,32 +202,6 @@ header {
     width: var(--profile-pic-dimensions);
     height: var(--profile-pic-dimensions);
     border-radius: 50%;
-  }
-  .uploadModalOverlay {
-    background-color: white;
-    border-radius: var(--modalRadius);
-    min-height: 40vh;
-    min-width: 40vw;
-    padding: 1rem;
-  }
-  .postPreview {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .uploadContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .uploadBtn {
-    background-color: var(--primary-button);
-    color: white;
-  }
-  .imagePreview {
-    max-height: 40vh;
   }
   .uploadImgBorderDiv {
     border: 2px solid black;
@@ -1000,5 +1009,10 @@ header {
   .smallscreen {
     display: flex;
     margin: 8px 4px 0 0;
+  }
+
+  .uploadModalOverlay {
+    min-height: 25vh;
+    min-width: 90vw;
   }
 }
