@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { UserAuth } from "../context/AuthContext";
-import { db } from "../firebase";
 import { v4 } from "uuid";
 import postCommentToFirestore from "../functions/postCommentToFirestore";
 
