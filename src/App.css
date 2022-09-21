@@ -158,6 +158,10 @@ header {
   gap: 1rem;
 }
 
+.profilePic {
+  object-fit: cover;
+}
+
 @media screen and (min-width: 1000px) {
   /* App needs to be relative so likeModal can position itself*/
   .app {
