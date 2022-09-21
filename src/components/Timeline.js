@@ -22,7 +22,7 @@ const Timeline = () => {
           }))
         );
         // remove the function call to get realtime listeners
-        snap();
+        // snap();
       });
     } catch (error) {
       console.log(error);

@@ -120,7 +120,7 @@ header {
   border-radius: var(--modalRadius);
   min-height: 30vh;
   min-width: 30vw;
-  padding: 0.5rem;
+  padding: 0.8rem;
   display: flex;
   justify-content: center;
 }
@@ -143,6 +143,11 @@ header {
 .imagePreview {
   max-height: 30vh;
   max-width: 100%;
+}
+
+/*Limits img height on timeline only*/
+.post > .timelineImg {
+  max-height: 80vh;
 }
 
 @media screen and (min-width: 1000px) {
@@ -210,6 +215,7 @@ header {
     height: 100%;
     width: 100%;
   }
+
   .postHeaderContainer {
     padding: 14px 4px 4px 16px;
     grid-row: 1/2;
@@ -305,7 +311,7 @@ header {
     top: 0%;
     left: 0%;
     height: 100%;
-    width: 100%;
+    width: 100vw;
     background-color: rgba(1, 1, 1, 0.65);
     display: flex;
     justify-content: center;
@@ -905,14 +911,6 @@ header {
     padding-left: 16px;
     padding-right: 16px;
   }
-  .postOverlay {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(1, 1, 1);
-  }
   .postOverlay > * {
     background-color: rgb(255, 255, 255);
   }
@@ -922,13 +920,22 @@ header {
   .timelineImg.complete {
     object-fit: fill;
   }
+  .postSeparator.gridSeparate {
+    grid-row: 2/3;
+  }
+  .postOverlay {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(1, 1, 1);
+  }
   .rightCompletePost {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-  .postSeparator.gridSeparate {
-    grid-row: 2/3;
+    padding: 0 4px 0 4px;
+    width: 100%;
   }
   .rightCompletePostLower {
     display: flex;
@@ -937,6 +944,20 @@ header {
     margin: 0 0 8px 0;
     height: 100vh;
   }
+  .answeringContainer {
+    display: flex;
+    flex-direction: column;
+    grid-row: 1/2;
+    justify-content: center;
+    width: 100%;
+  }
+  .answeringSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
   .rightCompletePostLower > * {
     font-size: var(--font-size-description);
   }
@@ -988,30 +1009,19 @@ header {
   .commentText {
     align-self: center;
   }
-  .answeringContainer {
-    display: flex;
-    flex-direction: column;
-    grid-row: 1/2;
-    justify-content: center;
-  }
-  .answeringSection {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    align-self: center;
-    margin-bottom: 0;
-  }
   .backMobile {
     display: flex;
     margin-right: 12px;
   }
   .smallscreen {
     display: flex;
-    margin: 8px 4px 0 0;
+    margin: 8px 12px 0 0;
   }
-
   .uploadModalOverlay {
-    min-height: 25vh;
+    max-height: 70vh;
     min-width: 90vw;
+  }
+  .follow {
+    min-height: 5vh;
   }
 }
