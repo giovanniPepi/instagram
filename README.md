@@ -1,5 +1,5 @@
 # instagram
-Instagram clone using ReactJS
+Instagram clone
 
 This is the last project of the Front End curriculum of The Odin Project
 
