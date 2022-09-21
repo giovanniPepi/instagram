@@ -168,6 +168,10 @@ header {
     height: var(--profile-pic-dimensions);
     border-radius: 50%;
   }
+  .uploadModalOverlay {
+    background-color: white;
+    border-radius: var(--modalRadius);
+  }
   .postPreview {
     display: flex;
     flex-direction: column;
@@ -190,6 +194,7 @@ header {
   .uploadImgBorderDiv {
     border: 2px solid black;
   }
+
   #postDescription {
     max-width: 50vw;
   }
@@ -344,10 +349,10 @@ header {
   .postOverlay {
     display: flex;
     border: 1px solid black;
-    background-color: var(--white0);
     max-width: 90vw;
     max-height: 85vh;
     background-color: rgba(1, 1, 1);
+    border-radius: var(--modalRadius);
   }
   .postOverlay > * {
     background-color: rgb(255, 255, 255);
@@ -355,6 +360,7 @@ header {
   .leftCompletePost {
     min-width: 30vw;
     max-width: 35vw;
+    border-radius: 12px 0px 0px 12px;
   }
   .timelineImg.complete {
     object-fit: cover;
@@ -366,6 +372,7 @@ header {
     min-width: 50vw;
     gap: 0.5rem;
     max-height: 90vh;
+    border-radius: 0px 12px 12px 0px;
   }
   .rightCompletePostLower {
     display: flex;
@@ -608,10 +615,10 @@ header {
   .postOverlay {
     display: flex;
     border: 1px solid black;
-    background-color: var(--white0);
     max-width: 90vw;
     max-height: 85vh;
     background-color: rgba(1, 1, 1);
+    border-radius: var(--modalRadius);
   }
   .postOverlay > * {
     background-color: rgb(255, 255, 255);
@@ -619,6 +626,7 @@ header {
   .leftCompletePost {
     min-width: 30vw;
     max-width: 35vw;
+    border-radius: 12px 0px 0px 12px;
   }
 
   .timelineImg.complete {
@@ -631,6 +639,7 @@ header {
     min-width: 50vw;
     gap: 0.5rem;
     max-height: 90vh;
+    border-radius: 0px 12px 12px 0px;
   }
   .postSeparator.gridSeparate {
     grid-row: 2/3;
@@ -890,7 +899,6 @@ header {
     display: flex;
     flex-direction: column;
     border: 1px solid black;
-    background-color: var(--white0);
     width: 100vw;
     height: 100vh;
     background-color: rgba(1, 1, 1);

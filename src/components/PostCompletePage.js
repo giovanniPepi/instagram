@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { v4 } from "uuid";
 import { UserAuth } from "../context/AuthContext";
 import postCommentToFirestore from "../functions/postCommentToFirestore";

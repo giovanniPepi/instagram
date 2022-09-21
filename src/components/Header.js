@@ -4,10 +4,12 @@ import { UserAuth } from "../context/AuthContext";
 import HomeIcon from "../icons/Home";
 import InstagramIcon from "../icons/Instagram";
 import PlusIcon from "../icons/Plus";
+import UploadModal from "./UploadModal";
 
 const Header = () => {
   const { user, logOut, userImg } = UserAuth();
   const [screenWidth, setScreenWIdth] = useState();
+  const [showUploadModal, setShowUploadModal] = useState(false);
 
   const handleSignOut = async () => {
     try {
@@ -20,8 +22,7 @@ const Header = () => {
   useEffect(() => {
     const size = window.screen.availWidth;
     setScreenWIdth(size);
-    console.log(screenWidth);
-  }, [screenWidth]);
+  }, [screenWidth, showUploadModal]);
 
   return (
     <>
@@ -53,11 +54,12 @@ const Header = () => {
                 <Link to="/">
                   <HomeIcon />
                 </Link>
-                <Link to="/upload">
-                  <div className="uploadBtnDiv">
-                    <PlusIcon />
-                  </div>
-                </Link>
+                <div
+                  className="uploadBtnDiv"
+                  onClick={() => setShowUploadModal(true)}
+                >
+                  <PlusIcon />
+                </div>
                 <img src={userImg} alt="profile" className="profilePic" />
                 <button onClick={handleSignOut}>Sign Out</button>
               </div>
@@ -70,6 +72,9 @@ const Header = () => {
         </div>
         <div className="postSeparator"></div>
       </header>
+      {showUploadModal ? (
+        <UploadModal setShowUploadModal={setShowUploadModal} />
+      ) : null}
     </>
   );
 };

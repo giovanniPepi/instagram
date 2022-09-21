@@ -34,7 +34,6 @@ const UploadPage = () => {
       setUserImg(profilePicUrl);
     };
     getUserProfilePic();
-    console.log(userImg);
   }, [userImg]);
 
   const uploadPost = () => {
