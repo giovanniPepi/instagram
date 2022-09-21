@@ -50,17 +50,24 @@ const Header = () => {
                   ></input>
                 )}
               </div>
-              <Link to="/">
-                <HomeIcon />
-              </Link>
-              <div
-                className="uploadBtnDiv"
-                onClick={() => setShowUploadModal(true)}
-              >
-                <PlusIcon />
+              <div className="profileContainer">
+                <Link to="/">
+                  <HomeIcon />
+                </Link>
+                <div
+                  className="uploadBtnDiv"
+                  onClick={() => setShowUploadModal(true)}
+                >
+                  <PlusIcon />
+                </div>
+                <img
+                  src={userImg}
+                  alt="profile"
+                  className="profilePic"
+                  style={{ width: "2.1rem", height: "2.1rem" }}
+                />
+                <button onClick={handleSignOut}>Sign Out</button>
               </div>
-              <img src={userImg} alt="profile" className="profilePic" />
-              <button onClick={handleSignOut}>Sign Out</button>
             </>
           ) : (
             <>

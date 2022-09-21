@@ -113,9 +113,6 @@ header {
 .titleDesc {
   white-space: nowrap;
 }
-.uploadBtnDiv {
-  margin-top: 4px;
-}
 
 .uploadModalOverlay {
   background-color: white;
@@ -155,6 +152,10 @@ header {
 .timelineImg.complete {
   object-fit: cover;
   border-radius: var(--modalRadiusLeft);
+}
+.profileContainer {
+  display: flex;
+  gap: 1rem;
 }
 
 @media screen and (min-width: 1000px) {
@@ -1027,5 +1028,8 @@ header {
   }
   .follow {
     min-height: 5vh;
+  }
+  .profileContainer {
+    gap: 0.2rem;
   }
 }
