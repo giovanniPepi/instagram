@@ -161,13 +161,27 @@ const Post = ({
       </div>
       <div className="postMetrics">
         <div className="commentSection">
-          <span
-            className="viewComments secondary"
-            onClick={() => setShowComments(true)}
-          >
-            View all {comment.length} comments
-          </span>
-          <p className="secondary hoursAgo">{getTime(timestamp)} AGO</p>
+          {comment.length < 2 ? (
+            <>
+              <span
+                className="viewComments secondary"
+                onClick={() => setShowComments(true)}
+              >
+                View {comment.length} comment
+              </span>
+              <p className="secondary hoursAgo">{getTime(timestamp)} AGO</p>{" "}
+            </>
+          ) : (
+            <>
+              <span
+                className="viewComments secondary"
+                onClick={() => setShowComments(true)}
+              >
+                View all {comment.length} comments
+              </span>
+              <p className="secondary hoursAgo">{getTime(timestamp)} AGO</p>{" "}
+            </>
+          )}
 
           <Comments
             commentArray={comment}
