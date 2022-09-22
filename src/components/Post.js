@@ -189,6 +189,7 @@ const Post = ({
             id={id}
             btnStyle={{ opacity: 0.3 }}
           />
+
           {showComments ? (
             <PostCompletePage
               setShowComments={setShowComments}

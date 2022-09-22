@@ -20,7 +20,53 @@ const Comments = ({ commentArray, id, showComplete }) => {
     <>
       <div className="commentSectionHigher">
         {/* only first and second comment if it exists */}
-        {commentArray[0] ? (
+        {commentArray[0] && commentArray[1] ? (
+          <>
+            <div className="comment" key={v4()}>
+              {commentArray[0].userImg &&
+              commentArray[0].userName &&
+              commentArray[0].commentText &&
+              commentArray[0].timestamp ? (
+                <>
+                  <img
+                    src={commentArray[0].userImg}
+                    alt="avatar"
+                    className="profilePicMini"
+                  />
+                  <div className="commentContainer">
+                    <span className="commentText">
+                      <strong>{commentArray[0].userName} </strong>
+                      {commentArray[0].commentText}
+                    </span>
+                  </div>
+                </>
+              ) : null}
+            </div>
+            <div className="comment" key={v4()}>
+              {commentArray[1].userImg &&
+              commentArray[1].userName &&
+              commentArray[1].commentText &&
+              commentArray[1].timestamp ? (
+                <>
+                  <img
+                    src={commentArray[1].userImg}
+                    alt="avatar"
+                    className="profilePicMini"
+                  />
+                  <div className="commentContainer">
+                    <span className="commentText">
+                      <strong>{commentArray[1].userName} </strong>
+                      {commentArray[1].commentText}
+                    </span>
+                  </div>
+                </>
+              ) : null}
+            </div>
+          </>
+        ) : null}
+
+        {/* only display second comment if it exists */}
+        {commentArray[0] && !commentArray[1] ? (
           <div className="comment" key={v4()}>
             {commentArray[0].userImg &&
             commentArray[0].userName &&
@@ -29,30 +75,6 @@ const Comments = ({ commentArray, id, showComplete }) => {
               <>
                 <img
                   src={commentArray[0].userImg}
-                  alt="avatar"
-                  className="profilePicMini"
-                />
-                <div className="commentContainer">
-                  <span className="commentText">
-                    <strong>{commentArray[0].userName} </strong>
-                    {commentArray[0].commentText}
-                  </span>
-                </div>
-              </>
-            ) : null}
-          </div>
-        ) : null}
-
-        {/* only display second comment if it exists */}
-        {commentArray[1] ? (
-          <div className="comment" key={v4()}>
-            {commentArray[1].userImg &&
-            commentArray[1].userName &&
-            commentArray[1].commentText &&
-            commentArray[1].timestamp ? (
-              <>
-                <img
-                  src={commentArray[1].userImg}
                   alt="avatar"
                   className="profilePicMini"
                 />
