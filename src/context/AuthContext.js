@@ -27,7 +27,9 @@ export const AuthContextProvider = ({ children }) => {
 
   const getUserProfilePic = async () => {
     const profilePicUrl = await getAuth().currentUser.photoURL;
-    setUserImg(profilePicUrl);
+    if (profilePicUrl !== null) {
+      setUserImg(!profilePicUrl);
+    } else setUserImg(blank);
   };
 
   getUserProfilePic();
